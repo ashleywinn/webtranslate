@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 import unittest
 
 class NewVisitorTest(unittest.TestCase):
@@ -18,9 +19,21 @@ class NewVisitorTest(unittest.TestCase):
         assert 'Translation Builder' in self.browser.title
 
         # There is a text box for entering a chinese phrase
+        input_instruction = self.browser.find_element_by_tag_name('h3').text
+        self.assertIn('Enter a sentence or phrase in Chinese', input_instruction)
+        input_box = self.browser.find_element_by_id('id_new_phrase')
+        self.assertEqual(input_box.get_attribute('placeholder'), '普通话')
+
+        # Steve enters a phrase he'd like to translate
+        input_box.send_keys('我会说一点普通话')
+        input_box.send_keys(Keys.ENTER)
 
         # After the phrase is entered definitions are shown for the characters and words
         # and a new text box appears for the user to enter their translation
+        table = self.browser.find_element_by_id('id_definitions_table')
+        rows = table.find_elements_by_tag_name('tr')
+        self.assertIn('说 [shuo1] : to speak', [row.text for row in rows])
+        self.assertIn('一 [yi1] : one', [row.text for row in rows])
 
         # The input is then re-printed, Chinese above the English with 
         # check boxes next to each character and word
