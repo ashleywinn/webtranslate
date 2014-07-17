@@ -36,17 +36,18 @@ def get_defintions_list(chin_str):
 
 
 def home_page(request):
-    if request.method == 'POST':
-        new_sentence_text = request.POST.get('new_phrase', '').strip()
-        if new_sentence_text:
-            Sentence.objects.create(text=new_sentence_text)
+    return render(request, 'home.html')
+
+def new_translation(request):
+    new_phrase_text = request.POST.get('new_phrase', '').strip()
+    if new_phrase_text != '':
+        Sentence.objects.create(text=new_phrase_text)
+        return redirect('/english/{}/'.format(new_phrase_text))
+    else:
         return redirect('/')
-    
-    definitions = []
-    try:
-        definitions = get_defintions_list(Sentence.objects.last().text)
-    except AttributeError:
-        pass
-    
+
+def view_english(request, chinese_phrase):
+    definitions = get_defintions_list(chinese_phrase)
     return render(request, 'home.html',
                   {'definitions': definitions})
+

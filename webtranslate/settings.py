@@ -62,6 +62,26 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+
+ #   'default': {
+ #         'ENGINE': 'django.db.backends.mysql',
+ #           'NAME': 'django_putonghua_db',
+ #           'USER': 'django_putonghua',
+ #       'PASSWORD': 'froumlesefjamgxo',
+ #        'OPTIONS': {
+ #            'autocommit': True,
+ #        },
+ #   }
+
+ #   'default': {
+ #         'ENGINE': 'mysql.connector.django',
+ #           'NAME': 'django_putonghua_db',
+ #           'USER': 'django_putonghua',
+ #       'PASSWORD': 'froumlesefjamgxo',
+ #        'OPTIONS': {
+ #            'autocommit': True,
+ #        },
+ #   }
 }
 
 # Internationalization

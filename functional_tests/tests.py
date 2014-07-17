@@ -1,4 +1,5 @@
 from django.test import LiveServerTestCase
+from django.utils.encoding import iri_to_uri
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import unittest
@@ -28,6 +29,10 @@ class NewVisitorTest(LiveServerTestCase):
         # Steve enters a phrase he'd like to translate
         input_box.send_keys('我会说一点普通话')
         input_box.send_keys(Keys.ENTER)
+
+        # After he hits Enter, he is taken to a new URL for his phrase/sentence
+        phrase_url = self.browser.current_url
+        self.assertRegex(phrase_url, iri_to_uri('/english/我会说一点普通话'))
 
         # After the phrase is entered definitions are shown for the characters and words
         # and a new text box appears for the user to enter their translation
