@@ -3,14 +3,9 @@
   <body>
     <h1>Translation Builder</h1>
     <h3>Enter a sentence or phrase in Chinese</h3>
-    <form method="POST" action="/putonghua/new_translation">
+    <form method="POST" action="/putonghua/new_chinese">
       <input name="new_phrase" id="id_new_phrase" placeholder="普通话" />
       {% csrf_token %}
     </form>
-    <table id="id_definitions_table">
-      {% for definition in definitions %}
-        <tr><td>{{ definition }}</td></tr>
-      {% endfor %}
-    </table>
   </body>
 </html>

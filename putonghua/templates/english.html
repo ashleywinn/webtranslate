@@ -1,0 +1,26 @@
+<html>
+  <title>Translation Builder</title>
+  <body>
+    <h1>Translation Builder</h1>
+    <h3>{{ phrase_translation.simplified }}</h3>
+    <h3>{{ phrase_translation.pinyin }}</h3>
+    <form method="POST" action="/english/{{ phrase_translation.simplified }}/new_pinyin">
+      <input name="pinyin" id="id_new_pinyin" placeholder="Your updated pinyin here" />
+      {% csrf_token %}
+    </form>
+    <h3>{{ phrase_translation.english }}</h3>
+    <form method="POST" action="/english/{{ phrase_translation.simplified }}/new_translation">
+      <input name="english" id="id_new_english" placeholder="Your English translation here" />
+      {% csrf_token %}
+    </form>
+    <table id="id_definitions_table">
+      {% for definition in definitions %}
+        <tr>
+	  <td>{{ definition.simplified }}</td>
+	  <td>{{ definition.pinyin }}</td>
+	  <td>{{ definition.english }}</td>
+	</tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

@@ -1,53 +1,62 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
-from putonghua.models import Sentence
+from putonghua.models import Sentence, ChinesePhrase, ChineseCharacter
+from putonghua.models import ChineseEnglishTranslation
+from putonghua.dictionary import find_definitions, get_chinese_phrases, add_chinese_phrase
+from putonghua.dictionary import add_english_definition, get_components_of_phrase
+from putonghua.dictionary import get_phrase_pinyin, update_phrase_pinyin
 
-def search_dict_for_string(chin_str):
-    # chin_str = chin_str.strip()
-    with open('putonghua/cedict_1_0_ts_utf-8_mdbg.txt') as f:
-        for line in f:
-            if line.startswith('#'): continue
-            trad, simp, rest = line.split(None, 2)
-            if trad == chin_str:
-                return line
-            if simp == chin_str:
-                return line
-        return ''
 
-def iterate_through_string(text):
-    max_chars = 6
-    for i in range(len(text)):
-        last_idx = i + max_chars
-        if last_idx > len(text):
-            last_idx = len(text)
-        for j in range(last_idx, i, -1):
-            yield text[i:j]
+def find_first_definition(phrase):
+    for definition in find_definitions(phrase):
+        return definition
+    return None
 
-def get_defintions_list(chin_str):
-    if not chin_str:
-        return []
-    definitions = []
-    for sub_phrase in iterate_through_string(chin_str):
-        definition = search_dict_for_string(sub_phrase)
-        if definition != '':
-            definitions.append(definition)
-    return definitions
+def find_up_to_3_definitions(phrase):
+    for idx, definition in enumerate(find_definitions(phrase)):
+        yield definition
+        if idx > 1: break
 
+def get_definitions(chin_str):
+    yield from find_definitions(chin_str)
+    if len(chin_str) > 1:
+        for component in get_components_of_phrase(chin_str):
+            yield from find_up_to_3_definitions(component)
 
 def home_page(request):
     return render(request, 'home.html')
 
-def new_translation(request):
+def new_translation(request, chinese_phrase):
+    english_text = request.POST.get('english', '').strip()
+    if english_text != '':
+        phrase = add_chinese_phrase(chinese_phrase)
+        add_english_definition(phrase, english_text)
+    return redirect('/english/{}/'.format(chinese_phrase))
+
+def new_pinyin(request, chinese_phrase):
+    pinyin_text = request.POST.get('pinyin', '').strip()
+    if pinyin_text != '':
+        phrase = add_chinese_phrase(chinese_phrase)
+        update_phrase_pinyin(phrase, pinyin_text)
+    return redirect('/english/{}/'.format(chinese_phrase))
+
+def new_chinese(request):
     new_phrase_text = request.POST.get('new_phrase', '').strip()
-    if new_phrase_text != '':
-        Sentence.objects.create(text=new_phrase_text)
-        return redirect('/english/{}/'.format(new_phrase_text))
-    else:
+    if new_phrase_text == '':
         return redirect('/')
+    return redirect('/english/{}/'.format(new_phrase_text))
 
 def view_english(request, chinese_phrase):
-    definitions = get_defintions_list(chinese_phrase)
-    return render(request, 'home.html',
-                  {'definitions': definitions})
+    translation = find_first_definition(chinese_phrase)
+    if translation is None:
+        translation = ChineseEnglishTranslation(
+            simplified=chinese_phrase,
+            pinyin=get_phrase_pinyin(chinese_phrase),
+            english=''
+            )
+    definitions = list(get_definitions(chinese_phrase))
+    return render(request, 'english.html',
+                  {'phrase_translation'  : translation,
+                   'definitions'         : definitions})
 

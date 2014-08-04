@@ -5,6 +5,8 @@ from selenium.webdriver.common.keys import Keys
 import unittest
 
 class NewVisitorTest(LiveServerTestCase):
+    fixtures = ['chinese_characters.json',]
+#    fixtures = ['my_test_data.json',]
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -37,9 +39,13 @@ class NewVisitorTest(LiveServerTestCase):
         # After the phrase is entered definitions are shown for the characters and words
         # and a new text box appears for the user to enter their translation
         table = self.browser.find_element_by_id('id_definitions_table')
-        rows = table.find_elements_by_tag_name('tr')
-        self.assertIn('说 [shuo1] : to speak', [row.text for row in rows])
-        self.assertIn('一 [yi1] : one', [row.text for row in rows])
+        rows = table.find_elements_by_tag_name('td')
+        self.assertIn('说', [row.text for row in rows])
+        self.assertIn('shuo1', [row.text for row in rows])
+        self.assertIn('to say', [row.text for row in rows])
+        self.assertIn('一', [row.text for row in rows])
+        self.assertIn('yi1', [row.text for row in rows])
+        self.assertIn('one', [row.text for row in rows])
 
         # The input is then re-printed, Chinese above the English with 
         # check boxes next to each character and word
