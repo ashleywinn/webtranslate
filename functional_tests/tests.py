@@ -5,8 +5,7 @@ from selenium.webdriver.common.keys import Keys
 import unittest
 
 class NewVisitorTest(LiveServerTestCase):
-    fixtures = ['chinese_characters.json',]
-#    fixtures = ['my_test_data.json',]
+    fixtures = ['simplified_characters.json',]
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -34,7 +33,7 @@ class NewVisitorTest(LiveServerTestCase):
 
         # After he hits Enter, he is taken to a new URL for his phrase/sentence
         phrase_url = self.browser.current_url
-        self.assertRegex(phrase_url, iri_to_uri('/english/我会说一点普通话'))
+        self.assertRegex(phrase_url, iri_to_uri('/putonghua/我会说一点普通话/english/'))
 
         # After the phrase is entered definitions are shown for the characters and words
         # and a new text box appears for the user to enter their translation
