@@ -25,7 +25,7 @@
 {% endblock %}
 
 {% block table %}
-    <table id="id_definitions_table">
+    <table id="id_definitions_table" class="table table-condensed">
       {% for definition in definitions %}
         <tr>
 	  <td><a href="{% url 'view_english' definition.simplified %}">{{ definition.simplified }}</a></td>

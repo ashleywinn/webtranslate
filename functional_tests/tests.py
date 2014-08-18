@@ -1,3 +1,4 @@
+import sys
 from django.contrib.staticfiles.testing import StaticLiveServerCase
 from django.utils.encoding import iri_to_uri
 from selenium import webdriver
@@ -6,6 +7,21 @@ import unittest
 
 class NewVisitorTest(StaticLiveServerCase):
     fixtures = ['five_hundred_chars.json',]
+
+    @classmethod
+    def setUpClass(cls):
+        for arg in sys.argv:
+            if 'liveserver' in arg:
+                cls.server_url = 'http://' + arg.split('=')[1]
+                return
+        super().setUpClass()
+        cls.server_url = cls.live_server_url
+
+    @classmethod
+    def tearDownClass(cls):
+        if cls.server_url == cls.live_server_url:
+            super().tearDownClass()
+
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -16,7 +32,7 @@ class NewVisitorTest(StaticLiveServerCase):
 
     def test_can_enter_chinese_text_and_retrieve_it_later(self):
         # Steve goes to check out a new translation website
-        self.browser.get(self.live_server_url)
+        self.browser.get(self.server_url)
 
         # Its called Translation Builder
         assert 'Translation Builder' in self.browser.title
@@ -55,7 +71,7 @@ class NewVisitorTest(StaticLiveServerCase):
 
     def test_layout_and_styling(self):
         # Steve's looks more closely at home page design
-        self.browser.get(self.live_server_url)
+        self.browser.get(self.server_url)
         self.browser.set_window_size(1024, 768)
 
         # He notices the input box is nicely centered
