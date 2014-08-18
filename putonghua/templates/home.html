@@ -1,11 +1,4 @@
-<html>
-  <title>Translation Builder</title>
-  <body>
-    <h1>Translation Builder</h1>
-    <h3>Enter a sentence or phrase in Chinese</h3>
-    <form method="POST" action="/putonghua/new_chinese">
-      <input name="new_phrase" id="id_new_phrase" placeholder="普通话" />
-      {% csrf_token %}
-    </form>
-  </body>
-</html>
+{% extends 'base.html' %}
+
+{% block header_text %}Translation Builder{% endblock %}
+{% block subheader_text %}Enter a sentence or phrase in Chinese{% endblock %}

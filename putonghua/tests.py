@@ -60,31 +60,41 @@ class NewTranslationTest(TestCase):
 
 
 class DictionaryModelTest(TestCase):
-    fixtures = ['simplified_characters.json']
+    fixtures = ['fifteen_chars_phrases.json']
+#    fixtures = ['simplified_characters.json']
+
+#    def test_what_characters_and_phrases(self):
+#        print("chars: " + 
+#              ' '.join(char.char for char in Character.objects.all()))
+#        print("phrases: " + 
+#              ' '.join(phr.simplified for phr in ChinesePhrase.objects.all()))
+
 
     def test_can_look_up_pinyin_for_phrase(self):
-        pinyin = get_phrase_pinyin('你多大了')
-        self.assertIn('ni3', pinyin)
-        self.assertIn('duo1', pinyin)
-        self.assertIn('da4', pinyin)
-        # don't yet have a good way of getting the best pinyin for a character
-        # self.assertIn('le5', pinyin) 
+        pinyin = get_phrase_pinyin('这个我们的')
+        self.assertIn('zhe4', pinyin)
+        self.assertIn('ge5', pinyin)
+        self.assertIn('wo3', pinyin)
+        self.assertIn('men5', pinyin) 
+        self.assertIn('de5', pinyin) 
 
     def test_can_look_up_characters(self):
-        word = Character.objects.get(char='事')
-        self.assertIn('affair', [translation.english 
+        word = Character.objects.get(char='在')
+        self.assertIn('to exist', [translation.english 
                                  for translation in word.translations.all()])
-        word = Character.objects.get(char='假')
-        self.assertIn('to borrow', [translation.english 
+        word = Character.objects.get(char='是')
+        self.assertIn('is', [translation.english 
                                for translation in word.translations.all()])
 
     # moved this here to avoid loading the fixture twice
     def test_english_view_displays_components(self):
-        response = self.client.get('/putonghua/第二项/english/')
-        self.assertContains(response, 'two')
+        # response = self.client.get('/putonghua/第二项/english/')
+        # self.assertContains(response, 'two')
 
-        response = self.client.get('/putonghua/在我的创作生活中，几乎没有真正的早晨。/english/')
-        self.assertContains(response, 'zhong')
+        response = self.client.get('/putonghua/这个可以好/english/')
+        self.assertContains(response, 'this')
+        self.assertContains(response, 'possible')
+        self.assertContains(response, 'good')
 
     
 #    def test_can_look_up_definitons(self):

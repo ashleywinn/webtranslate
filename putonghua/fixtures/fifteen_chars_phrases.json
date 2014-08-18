@@ -1,0 +1,2712 @@
+[
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "one",
+    "eng_md5": "f97c5d29941bfb1b2fdab0874906ab82"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "1",
+    "eng_md5": "c4ca4238a0b923820dcc509a6f75849b"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "single",
+    "eng_md5": "dd5c07036f2975ff4bce568b6511d3bc"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "a (article)",
+    "eng_md5": "cc3b5f90d93c03700426f3cf4c2eeb10"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "as soon as",
+    "eng_md5": "24f13ed38651c85860749d97dfe308e8"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "entire",
+    "eng_md5": "1b4a4d90874046fe8ebf6004695ad0b2"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "whole",
+    "eng_md5": "356c9ee60e9da05301adc3bd96f6b383"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "all",
+    "eng_md5": "a181a603769c1f98ad927e7367c7aa51"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "throughout",
+    "eng_md5": "a8d4ea2fefc3390777d1490639ec8538"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "\"one\" radical in Chinese characters (Kangxi radical 1)",
+    "eng_md5": "80bff0892c0fa2001f82cc553f269bc9"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "also pr. [yao1] for greater clarity when spelling out numbers digit by digit",
+    "eng_md5": "ebd904714f2d8d65623d186ded29bd47"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "(negative prefix)",
+    "eng_md5": "929350965ddf16cd0c4dfde4c646e689"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "not",
+    "eng_md5": "d529e941509eb9e9b9cfaeae1fe7ca23"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "no",
+    "eng_md5": "7fa3b767c460b54a2be4d49030b349c7"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "well",
+    "eng_md5": "f9323f5b51fc23e30c10623bd38de6ff"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "to be",
+    "eng_md5": "07062bb184376455ae1ec5e5734caf06"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "so",
+    "eng_md5": "b807023f87e63b8ada92f79f546ff9cc"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "because",
+    "eng_md5": "cc70865f1ecd933ec055851deb5bd69a"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "(modal particle intensifying preceding clause)",
+    "eng_md5": "00be5cdef005386a6acbb31dd680934e"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "(completed action marker)",
+    "eng_md5": "cfaaa11ac35cdc7fe21bb7c069c9d208"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "to finish",
+    "eng_md5": "8108f5b12a04de3edca0ef0d9d844cbe"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "to achieve",
+    "eng_md5": "f1a7699fab9c91ad899b893ecb29ea82"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "to understand",
+    "eng_md5": "0540c0e3dd58acf1ceefc9c4089b8d5e"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "me",
+    "eng_md5": "ab86a1e1ef70dff97959067b723c5c24"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "clear",
+    "eng_md5": "01bc6f8efa4202821e95f4fdf6298b30"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "modern",
+    "eng_md5": "ae74ea4e2e865ed3fd60c18a06e69c65"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "current",
+    "eng_md5": "43b5c9175984c071f30b873fdce0a000"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "this",
+    "eng_md5": "9e925e9341b490bfd3b4c4ca3b0c1ef2"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "now",
+    "eng_md5": "97bc592b27a9ada2d9a4bb418ed0ebed"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "he or him",
+    "eng_md5": "1327eac06a82bcd099865e8342cb1802"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "(used for either sex when the sex is unknown or unimportant)",
+    "eng_md5": "a4f7aff679d4352303fe314e1a1e3637"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "(used before sb's name for emphasis)",
+    "eng_md5": "a5995ec12b62e1fa8186532b1b18d3d4"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "(used as a meaningless mock object)",
+    "eng_md5": "9c9cdc99ace05888b746df573719aa55"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "other",
+    "eng_md5": "795f3202b17cb6bc3d4b771d8c6c9eaf"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "another",
+    "eng_md5": "b32d73e56ec99bc5ec8f83871cde708a"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "(used in given names)",
+    "eng_md5": "231968ead0d4c69c8257168e9b506e1f"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "my",
+    "eng_md5": "6864f389d9876436bc8778ff071d1b6c"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "we",
+    "eng_md5": "ff1ccf57e98c817df1efcd9fe44a8aeb"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "our",
+    "eng_md5": "162e31afc5ade88a04d3f428e97e8f46"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "you (informal, as opposed to courteous \u60a8[nin2])",
+    "eng_md5": "365347441b937830f3fe5351a8ad03bd"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "good",
+    "eng_md5": "755f85c2723bb39381c7379a604160d8"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "individual",
+    "eng_md5": "23b79ae0fc0f07a3669598dd23c694cc"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "that",
+    "eng_md5": "21582c6c30be1217322cdb9aebaf4a59"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "size",
+    "eng_md5": "f7bd60b75b29d79b660a2859395c1a24"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "classifier for people or objects in general",
+    "eng_md5": "f0fa87891101d2a4ee8f45a737f30338"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "plural marker for pronouns, and nouns referring to individuals",
+    "eng_md5": "9ab97086f3535ba16264ad90f7c35352"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "if",
+    "eng_md5": "39c8942e1038872a822c0dc75eedbde3"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "in case",
+    "eng_md5": "6c6f2c8140c072d02803ceac95e2869d"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "such",
+    "eng_md5": "6f129a2e6e103ea342a085875931830b"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "to tell",
+    "eng_md5": "7b405bd33ce7f19334d024f15bac5408"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "to have",
+    "eng_md5": "5a43bf14ad84a041738d1b2976f20ed1"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "aim",
+    "eng_md5": "4204e3a9e60327e2e86b5877bb856e1d"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "at present",
+    "eng_md5": "5effbe0e41e92397297a394eea9bc925"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "can",
+    "eng_md5": "2c61ebff5a7f675451467527df66788d"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "may",
+    "eng_md5": "9a4b6f884971dcb4a5172876b335baab"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "able to",
+    "eng_md5": "513409e6b120a52ee0562171a0a83c92"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "very",
+    "eng_md5": "f016441d00c16c9b912d05e9d81d894d"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "I",
+    "eng_md5": "865c0c0b4ab0e063e5caa3387c1a8741"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "to inform",
+    "eng_md5": "fe71f69039d6161cca3e8cdd2b1a1b97"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "yes",
+    "eng_md5": "a6105c0a611b41b08f1209506350279e"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "what?",
+    "eng_md5": "8717cfca734e8987971f63b20eeb8024"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "to be fond of",
+    "eng_md5": "4071ee8f8aff94fbdad7f910a22c426c"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "(located) at",
+    "eng_md5": "96b5871ed4fde9c3c5c83677930966e4"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "(to be) in",
+    "eng_md5": "ac523c8dddc259a41e647e67fd4f2086"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "to exist",
+    "eng_md5": "3e8b6673350d635fd1f1e9a9e8f25911"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "in the middle of doing sth",
+    "eng_md5": "ea468cb710818d65297061b40a2be468"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "(indicating an action in progress)",
+    "eng_md5": "aaeb9ec619000034bd4720bd475f4c5c"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "why?",
+    "eng_md5": "fd1562614f1983c875db9c78c89e31f6"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "proper",
+    "eng_md5": "d53f18f27b069a5ae88f472a0c2e2745"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "good to",
+    "eng_md5": "cac85e4b7c0535342acec1335d6de903"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "easy to",
+    "eng_md5": "5008b2b578eb51e948fd22277e351926"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "(suffix indicating completion or readiness)",
+    "eng_md5": "16de2e16a44292d492149f8de371d0e6"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "(of an unmarried couple) to be close",
+    "eng_md5": "50d15710364c51a258d2d77563f4ce98"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "to be keen on each other",
+    "eng_md5": "ff09f88c909dda521c8903a469e13e3a"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "to have a tendency to",
+    "eng_md5": "976b5a90765d45c2469ea57eaadf05ba"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "to be prone to",
+    "eng_md5": "886f04083c8db07dac8e3761ec5c1c84"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "owing to",
+    "eng_md5": "3bd0fe418e46dc128a123985325ef9a5"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "is",
+    "eng_md5": "a2a551a6458a8de22446cc76d639a9e9"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "are",
+    "eng_md5": "4015e9ce43edfb0668ddaa973ebc7e87"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "am",
+    "eng_md5": "c04cd38aeb30f3ad1f8ab4e64a0ded7b"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "to know",
+    "eng_md5": "392de8a4b8638dfde7bb0e5001359659"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "there is",
+    "eng_md5": "cc244c388eef3c404323316c191edec8"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "there are",
+    "eng_md5": "38c6861b4ab6efa87372988f26adf525"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "these",
+    "eng_md5": "bd4c4ea1b44a8ff2afa18dfd261ec2c8"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "to not have",
+    "eng_md5": "8e22d9d947eda4b6bfb8472fdf606036"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "like this",
+    "eng_md5": "4c2dbdc51873a05f46615c4b15d78a9c"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "of",
+    "eng_md5": "8bf8854bebe108183caeb845c7676ae4"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "~'s (possessive particle)",
+    "eng_md5": "3b200d82115a77d7ff61474fb3b63404"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "(used after an attribute)",
+    "eng_md5": "c92a7c2710c7f272862d27d1cf5bddce"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "(used to form a nominal expression)",
+    "eng_md5": "66fc108fa03f135e2c2b53961ae0107e"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "(used at the end of a declarative sentence for emphasis)",
+    "eng_md5": "932bb3263215338c0d989f19b6f0ad95"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "see \u7684\u58eb[di1 shi4]",
+    "eng_md5": "92ddf9bf8fc464727567ab430f6807df"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "really and truly",
+    "eng_md5": "69e2c7ffeabbb92f2680cc9f4b0604f5"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "(of eyes) bright",
+    "eng_md5": "8c24cb67f534e1f52c404b3490648f5e"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "clear-sighted",
+    "eng_md5": "6b71ce59d98732a74ccbb589f109c49b"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "to understand clearly",
+    "eng_md5": "5e1050546ca14d4add45809dee08cbc5"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "(commonly pr. [zhei4] before a classifier, esp. in Beijing)",
+    "eng_md5": "07c12fef7098d5ef324855aa7fbaec90"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "to not be",
+    "eng_md5": "48ab39c0530e2481640609755c5b0b2d"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "exclamatory final particle",
+    "eng_md5": "4554029d679fce25d0532872dd633e71"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "interrogative final particle",
+    "eng_md5": "445500a5c17cb48c4521d867c3da2294"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "suffix, used to form interrogative \u751a\u9ebc|\u4ec0\u4e48[shen2 me5], what?, indefinite \u9019\u9ebc|\u8fd9\u4e48[zhe4 me5] thus, etc",
+    "eng_md5": "01a9888acb5156ddec1d5d4254362e6e"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "who?",
+    "eng_md5": "2031a94ff8b48ec750fe7db5868a05fc"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "something",
+    "eng_md5": "437b930db84b8079c2dd804a71936b5f"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "anything",
+    "eng_md5": "f0e166dc34d14d6c228ffac576c9a43c"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "they",
+    "eng_md5": "2bb3d86d95234affa7c5bd68c4bab606"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "how?",
+    "eng_md5": "671b229988e56d0e14c182d509e71a02"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "you (plural)",
+    "eng_md5": "e7c1559061eb3de3a59cd92f295eab75"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "us",
+    "eng_md5": "0b3b97fa66886c5688ee4ae80ec0c3c2"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "possible",
+    "eng_md5": "6fcc4b7d36184ba33346b4be2d5d8244"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "to let know",
+    "eng_md5": "db37914ffee464d5b019f2f57cf52bf4"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "on account of",
+    "eng_md5": "c3ab4f4e83227c0899a50519cc01b5f5"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "nowadays",
+    "eng_md5": "5d32adffd0776c2fa367ee5cc78a2739"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "in the event that",
+    "eng_md5": "5ef3670f67cc7ced7c0d870e9b004b2f"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "to become aware of",
+    "eng_md5": "246ec8b5bd4828e7018440c847d9040e"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "variant of \u600e\u9ebc|\u600e\u4e48[zen3 me5]",
+    "eng_md5": "aae2c79f759fb88d776f2806f9c9b195"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "ourselves",
+    "eng_md5": "3aa0f8d2ed4d66f0f44a08593af7dc39"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "haven't",
+    "eng_md5": "1d7049a06c1b9a4010b54762e4868bc2"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "hasn't",
+    "eng_md5": "b26ce20eb8b94bb4057079894058f73c"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "doesn't exist",
+    "eng_md5": "55948c79ebfbf916d001b4982ec77ec1"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "at the moment",
+    "eng_md5": "da217c26976d7228f989a2d105c5939b"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "also pr. [zhi1 dao5]",
+    "eng_md5": "d0aaf0fcde94a6d6583ec7fd89927ed1"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "this one",
+    "eng_md5": "8f7f10575bd1e39ac8cdd827891a463e"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "this kind of",
+    "eng_md5": "26598960fdfe522b688bd8bc44c3ccba"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "this way",
+    "eng_md5": "92aad1c1b7d9b7930df3639a05b0a6ac"
+  }
+},
+{
+  "model": "putonghua.englishtranslation",
+  "fields": {
+    "english": "(unknown)",
+    "eng_md5": "013cf261f9ccf5d4f027bc001d0d1d0c"
+  }
+},
+{
+  "model": "putonghua.character",
+  "fields": {
+    "alternate_char": "\u5e7a",
+    "composed_of": "",
+    "char_type": "T",
+    "variant_of": "\u4e48",
+    "pinyin": "yao1",
+    "freq_score": 639,
+    "classifiers": ""
+  },
+  "pk": "\u4e48"
+},
+{
+  "model": "putonghua.character",
+  "fields": {
+    "alternate_char": "",
+    "composed_of": "",
+    "char_type": "S",
+    "variant_of": "",
+    "pinyin": "le5",
+    "freq_score": 696,
+    "classifiers": ""
+  },
+  "pk": "\u4e86"
+},
+{
+  "model": "putonghua.character",
+  "fields": {
+    "alternate_char": "",
+    "composed_of": "",
+    "char_type": "S",
+    "variant_of": "",
+    "pinyin": "yi1",
+    "freq_score": 647,
+    "classifiers": ""
+  },
+  "pk": "\u4e00"
+},
+{
+  "model": "putonghua.character",
+  "fields": {
+    "alternate_char": "",
+    "composed_of": "",
+    "char_type": "S",
+    "variant_of": "",
+    "pinyin": "bu4",
+    "freq_score": 687,
+    "classifiers": ""
+  },
+  "pk": "\u4e0d"
+},
+{
+  "model": "putonghua.character",
+  "fields": {
+    "alternate_char": "\u5011",
+    "composed_of": "",
+    "char_type": "S",
+    "variant_of": "",
+    "pinyin": "men5",
+    "freq_score": 662,
+    "classifiers": ""
+  },
+  "pk": "\u4eec"
+},
+{
+  "model": "putonghua.character",
+  "fields": {
+    "alternate_char": "\u9019",
+    "composed_of": "",
+    "char_type": "S",
+    "variant_of": "",
+    "pinyin": "zhe4",
+    "freq_score": 651,
+    "classifiers": ""
+  },
+  "pk": "\u8fd9"
+},
+{
+  "model": "putonghua.character",
+  "fields": {
+    "alternate_char": "",
+    "composed_of": "",
+    "char_type": "S",
+    "variant_of": "",
+    "pinyin": "wo3",
+    "freq_score": 769,
+    "classifiers": ""
+  },
+  "pk": "\u6211"
+},
+{
+  "model": "putonghua.character",
+  "fields": {
+    "alternate_char": "",
+    "composed_of": "",
+    "char_type": "S",
+    "variant_of": "",
+    "pinyin": "de5",
+    "freq_score": 754,
+    "classifiers": ""
+  },
+  "pk": "\u7684"
+},
+{
+  "model": "putonghua.character",
+  "fields": {
+    "alternate_char": "",
+    "composed_of": "",
+    "char_type": "S",
+    "variant_of": "",
+    "pinyin": "ni3",
+    "freq_score": 734,
+    "classifiers": ""
+  },
+  "pk": "\u4f60"
+},
+{
+  "model": "putonghua.character",
+  "fields": {
+    "alternate_char": "",
+    "composed_of": "",
+    "char_type": "S",
+    "variant_of": "",
+    "pinyin": "shi4",
+    "freq_score": 713,
+    "classifiers": ""
+  },
+  "pk": "\u662f"
+},
+{
+  "model": "putonghua.character",
+  "fields": {
+    "alternate_char": "",
+    "composed_of": "",
+    "char_type": "S",
+    "variant_of": "",
+    "pinyin": "ta1",
+    "freq_score": 640,
+    "classifiers": ""
+  },
+  "pk": "\u4ed6"
+},
+{
+  "model": "putonghua.character",
+  "fields": {
+    "alternate_char": "",
+    "composed_of": "",
+    "char_type": "S",
+    "variant_of": "",
+    "pinyin": "zai4",
+    "freq_score": 637,
+    "classifiers": ""
+  },
+  "pk": "\u5728"
+},
+{
+  "model": "putonghua.character",
+  "fields": {
+    "alternate_char": "",
+    "composed_of": "",
+    "char_type": "S",
+    "variant_of": "",
+    "pinyin": "you3",
+    "freq_score": 634,
+    "classifiers": ""
+  },
+  "pk": "\u6709"
+},
+{
+  "model": "putonghua.character",
+  "fields": {
+    "alternate_char": "\u500b",
+    "composed_of": "",
+    "char_type": "S",
+    "variant_of": "\u4e2a",
+    "pinyin": "ge5",
+    "freq_score": 618,
+    "classifiers": ""
+  },
+  "pk": "\u4e2a"
+},
+{
+  "model": "putonghua.character",
+  "fields": {
+    "alternate_char": "",
+    "composed_of": "",
+    "char_type": "S",
+    "variant_of": "",
+    "pinyin": "hao3",
+    "freq_score": 609,
+    "classifiers": ""
+  },
+  "pk": "\u597d"
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "4554029d679fce25d0532872dd633e71"
+    ],
+    "pinyin": "ma2",
+    "character": "\u4e48"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "445500a5c17cb48c4521d867c3da2294"
+    ],
+    "pinyin": "ma5",
+    "character": "\u4e48"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "01a9888acb5156ddec1d5d4254362e6e"
+    ],
+    "pinyin": "me5",
+    "character": "\u4e48"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "00be5cdef005386a6acbb31dd680934e"
+    ],
+    "pinyin": "le5",
+    "character": "\u4e86"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "cfaaa11ac35cdc7fe21bb7c069c9d208"
+    ],
+    "pinyin": "le5",
+    "character": "\u4e86"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "8108f5b12a04de3edca0ef0d9d844cbe"
+    ],
+    "pinyin": "liao3",
+    "character": "\u4e86"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "f1a7699fab9c91ad899b893ecb29ea82"
+    ],
+    "pinyin": "liao3",
+    "character": "\u4e86"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "0540c0e3dd58acf1ceefc9c4089b8d5e"
+    ],
+    "pinyin": "liao3",
+    "character": "\u4e86"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "8c24cb67f534e1f52c404b3490648f5e"
+    ],
+    "pinyin": "liao3",
+    "character": "\u4e86"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "6b71ce59d98732a74ccbb589f109c49b"
+    ],
+    "pinyin": "liao3",
+    "character": "\u4e86"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "5e1050546ca14d4add45809dee08cbc5"
+    ],
+    "pinyin": "liao3",
+    "character": "\u4e86"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "f97c5d29941bfb1b2fdab0874906ab82"
+    ],
+    "pinyin": "yi1",
+    "character": "\u4e00"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "c4ca4238a0b923820dcc509a6f75849b"
+    ],
+    "pinyin": "yi1",
+    "character": "\u4e00"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "dd5c07036f2975ff4bce568b6511d3bc"
+    ],
+    "pinyin": "yi1",
+    "character": "\u4e00"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "cc3b5f90d93c03700426f3cf4c2eeb10"
+    ],
+    "pinyin": "yi1",
+    "character": "\u4e00"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "24f13ed38651c85860749d97dfe308e8"
+    ],
+    "pinyin": "yi1",
+    "character": "\u4e00"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "1b4a4d90874046fe8ebf6004695ad0b2"
+    ],
+    "pinyin": "yi1",
+    "character": "\u4e00"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "356c9ee60e9da05301adc3bd96f6b383"
+    ],
+    "pinyin": "yi1",
+    "character": "\u4e00"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "a181a603769c1f98ad927e7367c7aa51"
+    ],
+    "pinyin": "yi1",
+    "character": "\u4e00"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "a8d4ea2fefc3390777d1490639ec8538"
+    ],
+    "pinyin": "yi1",
+    "character": "\u4e00"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "80bff0892c0fa2001f82cc553f269bc9"
+    ],
+    "pinyin": "yi1",
+    "character": "\u4e00"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "ebd904714f2d8d65623d186ded29bd47"
+    ],
+    "pinyin": "yi1",
+    "character": "\u4e00"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "929350965ddf16cd0c4dfde4c646e689"
+    ],
+    "pinyin": "bu4",
+    "character": "\u4e0d"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "d529e941509eb9e9b9cfaeae1fe7ca23"
+    ],
+    "pinyin": "bu4",
+    "character": "\u4e0d"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "7fa3b767c460b54a2be4d49030b349c7"
+    ],
+    "pinyin": "bu4",
+    "character": "\u4e0d"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "9ab97086f3535ba16264ad90f7c35352"
+    ],
+    "pinyin": "men5",
+    "character": "\u4eec"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "9e925e9341b490bfd3b4c4ca3b0c1ef2"
+    ],
+    "pinyin": "zhe4",
+    "character": "\u8fd9"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "bd4c4ea1b44a8ff2afa18dfd261ec2c8"
+    ],
+    "pinyin": "zhe4",
+    "character": "\u8fd9"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "07c12fef7098d5ef324855aa7fbaec90"
+    ],
+    "pinyin": "zhe4",
+    "character": "\u8fd9"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "865c0c0b4ab0e063e5caa3387c1a8741"
+    ],
+    "pinyin": "wo3",
+    "character": "\u6211"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "ab86a1e1ef70dff97959067b723c5c24"
+    ],
+    "pinyin": "wo3",
+    "character": "\u6211"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "6864f389d9876436bc8778ff071d1b6c"
+    ],
+    "pinyin": "wo3",
+    "character": "\u6211"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "8bf8854bebe108183caeb845c7676ae4"
+    ],
+    "pinyin": "de5",
+    "character": "\u7684"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "3b200d82115a77d7ff61474fb3b63404"
+    ],
+    "pinyin": "de5",
+    "character": "\u7684"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "c92a7c2710c7f272862d27d1cf5bddce"
+    ],
+    "pinyin": "de5",
+    "character": "\u7684"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "66fc108fa03f135e2c2b53961ae0107e"
+    ],
+    "pinyin": "de5",
+    "character": "\u7684"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "932bb3263215338c0d989f19b6f0ad95"
+    ],
+    "pinyin": "de5",
+    "character": "\u7684"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "92ddf9bf8fc464727567ab430f6807df"
+    ],
+    "pinyin": "di1",
+    "character": "\u7684"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "69e2c7ffeabbb92f2680cc9f4b0604f5"
+    ],
+    "pinyin": "di2",
+    "character": "\u7684"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "4204e3a9e60327e2e86b5877bb856e1d"
+    ],
+    "pinyin": "di4",
+    "character": "\u7684"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "01bc6f8efa4202821e95f4fdf6298b30"
+    ],
+    "pinyin": "di4",
+    "character": "\u7684"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "365347441b937830f3fe5351a8ad03bd"
+    ],
+    "pinyin": "ni3",
+    "character": "\u4f60"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "a2a551a6458a8de22446cc76d639a9e9"
+    ],
+    "pinyin": "shi4",
+    "character": "\u662f"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "4015e9ce43edfb0668ddaa973ebc7e87"
+    ],
+    "pinyin": "shi4",
+    "character": "\u662f"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "c04cd38aeb30f3ad1f8ab4e64a0ded7b"
+    ],
+    "pinyin": "shi4",
+    "character": "\u662f"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "a6105c0a611b41b08f1209506350279e"
+    ],
+    "pinyin": "shi4",
+    "character": "\u662f"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "07062bb184376455ae1ec5e5734caf06"
+    ],
+    "pinyin": "shi4",
+    "character": "\u662f"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "231968ead0d4c69c8257168e9b506e1f"
+    ],
+    "pinyin": "shi4",
+    "character": "\u662f"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "1327eac06a82bcd099865e8342cb1802"
+    ],
+    "pinyin": "ta1",
+    "character": "\u4ed6"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "a4f7aff679d4352303fe314e1a1e3637"
+    ],
+    "pinyin": "ta1",
+    "character": "\u4ed6"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "a5995ec12b62e1fa8186532b1b18d3d4"
+    ],
+    "pinyin": "ta1",
+    "character": "\u4ed6"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "9c9cdc99ace05888b746df573719aa55"
+    ],
+    "pinyin": "ta1",
+    "character": "\u4ed6"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "795f3202b17cb6bc3d4b771d8c6c9eaf"
+    ],
+    "pinyin": "ta1",
+    "character": "\u4ed6"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "b32d73e56ec99bc5ec8f83871cde708a"
+    ],
+    "pinyin": "ta1",
+    "character": "\u4ed6"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "96b5871ed4fde9c3c5c83677930966e4"
+    ],
+    "pinyin": "zai4",
+    "character": "\u5728"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "ac523c8dddc259a41e647e67fd4f2086"
+    ],
+    "pinyin": "zai4",
+    "character": "\u5728"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "3e8b6673350d635fd1f1e9a9e8f25911"
+    ],
+    "pinyin": "zai4",
+    "character": "\u5728"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "ea468cb710818d65297061b40a2be468"
+    ],
+    "pinyin": "zai4",
+    "character": "\u5728"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "aaeb9ec619000034bd4720bd475f4c5c"
+    ],
+    "pinyin": "zai4",
+    "character": "\u5728"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "5a43bf14ad84a041738d1b2976f20ed1"
+    ],
+    "pinyin": "you3",
+    "character": "\u6709"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "cc244c388eef3c404323316c191edec8"
+    ],
+    "pinyin": "you3",
+    "character": "\u6709"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "38c6861b4ab6efa87372988f26adf525"
+    ],
+    "pinyin": "you3",
+    "character": "\u6709"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "3e8b6673350d635fd1f1e9a9e8f25911"
+    ],
+    "pinyin": "you3",
+    "character": "\u6709"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "07062bb184376455ae1ec5e5734caf06"
+    ],
+    "pinyin": "you3",
+    "character": "\u6709"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "23b79ae0fc0f07a3669598dd23c694cc"
+    ],
+    "pinyin": "ge4",
+    "character": "\u4e2a"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "9e925e9341b490bfd3b4c4ca3b0c1ef2"
+    ],
+    "pinyin": "ge4",
+    "character": "\u4e2a"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "21582c6c30be1217322cdb9aebaf4a59"
+    ],
+    "pinyin": "ge4",
+    "character": "\u4e2a"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "f7bd60b75b29d79b660a2859395c1a24"
+    ],
+    "pinyin": "ge4",
+    "character": "\u4e2a"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "f0fa87891101d2a4ee8f45a737f30338"
+    ],
+    "pinyin": "ge4",
+    "character": "\u4e2a"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "755f85c2723bb39381c7379a604160d8"
+    ],
+    "pinyin": "hao3",
+    "character": "\u597d"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "f9323f5b51fc23e30c10623bd38de6ff"
+    ],
+    "pinyin": "hao3",
+    "character": "\u597d"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "d53f18f27b069a5ae88f472a0c2e2745"
+    ],
+    "pinyin": "hao3",
+    "character": "\u597d"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "cac85e4b7c0535342acec1335d6de903"
+    ],
+    "pinyin": "hao3",
+    "character": "\u597d"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "5008b2b578eb51e948fd22277e351926"
+    ],
+    "pinyin": "hao3",
+    "character": "\u597d"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "f016441d00c16c9b912d05e9d81d894d"
+    ],
+    "pinyin": "hao3",
+    "character": "\u597d"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "b807023f87e63b8ada92f79f546ff9cc"
+    ],
+    "pinyin": "hao3",
+    "character": "\u597d"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "16de2e16a44292d492149f8de371d0e6"
+    ],
+    "pinyin": "hao3",
+    "character": "\u597d"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "50d15710364c51a258d2d77563f4ce98"
+    ],
+    "pinyin": "hao3",
+    "character": "\u597d"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "ff09f88c909dda521c8903a469e13e3a"
+    ],
+    "pinyin": "hao3",
+    "character": "\u597d"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "4071ee8f8aff94fbdad7f910a22c426c"
+    ],
+    "pinyin": "hao4",
+    "character": "\u597d"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "976b5a90765d45c2469ea57eaadf05ba"
+    ],
+    "pinyin": "hao4",
+    "character": "\u597d"
+  }
+},
+{
+  "model": "putonghua.charpinyinenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "886f04083c8db07dac8e3761ec5c1c84"
+    ],
+    "pinyin": "hao4",
+    "character": "\u597d"
+  }
+},
+{
+  "model": "putonghua.chinesephrase",
+  "fields": {
+    "length": 2,
+    "freq_score": 688,
+    "phrase_md5": "736ccbe560379bec5b7660f0b0f0df77",
+    "simplified": "\u4ec0\u4e48",
+    "pinyin": "shen2 me5"
+  }
+},
+{
+  "model": "putonghua.chinesephrase",
+  "fields": {
+    "length": 2,
+    "freq_score": 670,
+    "phrase_md5": "5dd93697ae229bcf46047f29173a7edf",
+    "simplified": "\u77e5\u9053",
+    "pinyin": "zhi1 dao4"
+  }
+},
+{
+  "model": "putonghua.chinesephrase",
+  "fields": {
+    "length": 2,
+    "freq_score": 636,
+    "phrase_md5": "d0a33aaeb397dc8b27cc08a024caf98e",
+    "simplified": "\u4ed6\u4eec",
+    "pinyin": "ta1 men5"
+  }
+},
+{
+  "model": "putonghua.chinesephrase",
+  "fields": {
+    "length": 2,
+    "freq_score": 614,
+    "phrase_md5": "247edb94d44823eab01d403544db8b40",
+    "simplified": "\u4f60\u4eec",
+    "pinyin": "ni3 men5"
+  }
+},
+{
+  "model": "putonghua.chinesephrase",
+  "fields": {
+    "length": 2,
+    "freq_score": 610,
+    "phrase_md5": "b4ebe3f519ec51d5bd5fc832345135db",
+    "simplified": "\u6ca1\u6709",
+    "pinyin": "mei2 you3"
+  }
+},
+{
+  "model": "putonghua.chinesephrase",
+  "fields": {
+    "length": 2,
+    "freq_score": 594,
+    "phrase_md5": "76d3280175d04b6a5da29bcac0c26e42",
+    "simplified": "\u8fd9\u4e2a",
+    "pinyin": "zhe4 ge5"
+  }
+},
+{
+  "model": "putonghua.chinesephrase",
+  "fields": {
+    "length": 2,
+    "freq_score": 591,
+    "phrase_md5": "786df56259079ba171f66fdf519ed4ed",
+    "simplified": "\u600e\u4e48",
+    "pinyin": "zen3 me5"
+  }
+},
+{
+  "model": "putonghua.chinesephrase",
+  "fields": {
+    "length": 2,
+    "freq_score": 590,
+    "phrase_md5": "505ccfb0e8b6f7ebf36cb0e99f3254ef",
+    "simplified": "\u73b0\u5728",
+    "pinyin": "xian4 zai4"
+  }
+},
+{
+  "model": "putonghua.chinesephrase",
+  "fields": {
+    "length": 2,
+    "freq_score": 579,
+    "phrase_md5": "eaa9c5c2f1eff446cba2a2793a20fc0b",
+    "simplified": "\u53ef\u4ee5",
+    "pinyin": "ke3 yi3"
+  }
+},
+{
+  "model": "putonghua.chinesephrase",
+  "fields": {
+    "length": 2,
+    "freq_score": 575,
+    "phrase_md5": "f12e4aca663eea3ddfccac53633e6864",
+    "simplified": "\u5982\u679c",
+    "pinyin": "ru2 guo3"
+  }
+},
+{
+  "model": "putonghua.chinesephrase",
+  "fields": {
+    "length": 2,
+    "freq_score": 551,
+    "phrase_md5": "5f3cf4472ed57ecf454c60002a0142ab",
+    "simplified": "\u56e0\u4e3a",
+    "pinyin": "yin1 wei4"
+  }
+},
+{
+  "model": "putonghua.chinesephrase",
+  "fields": {
+    "length": 2,
+    "freq_score": 618,
+    "phrase_md5": "8b9a14d93c3e810a623e97a39a231353",
+    "simplified": "\u4e00\u4e2a",
+    "pinyin": "(unknown)"
+  }
+},
+{
+  "model": "putonghua.chinesephrase",
+  "fields": {
+    "length": 2,
+    "freq_score": 558,
+    "phrase_md5": "9807ef70128014e54018abc136982951",
+    "simplified": "\u8fd9\u6837",
+    "pinyin": "zhe4 yang4"
+  }
+},
+{
+  "model": "putonghua.chinesephrase",
+  "fields": {
+    "length": 2,
+    "freq_score": 733,
+    "phrase_md5": "ab4a85fc2ec4cf830e0f84aaacefcb1c",
+    "simplified": "\u6211\u4eec",
+    "pinyin": "wo3 men5"
+  }
+},
+{
+  "model": "putonghua.chinesephrase",
+  "fields": {
+    "length": 2,
+    "freq_score": 553,
+    "phrase_md5": "79b197abe7737ac96e50a12f09f58ed3",
+    "simplified": "\u544a\u8bc9",
+    "pinyin": "gao4 su5"
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "8717cfca734e8987971f63b20eeb8024"
+    ],
+    "phrase": [
+      "736ccbe560379bec5b7660f0b0f0df77"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "2031a94ff8b48ec750fe7db5868a05fc"
+    ],
+    "phrase": [
+      "736ccbe560379bec5b7660f0b0f0df77"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "437b930db84b8079c2dd804a71936b5f"
+    ],
+    "phrase": [
+      "736ccbe560379bec5b7660f0b0f0df77"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "f0e166dc34d14d6c228ffac576c9a43c"
+    ],
+    "phrase": [
+      "736ccbe560379bec5b7660f0b0f0df77"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "392de8a4b8638dfde7bb0e5001359659"
+    ],
+    "phrase": [
+      "5dd93697ae229bcf46047f29173a7edf"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "246ec8b5bd4828e7018440c847d9040e"
+    ],
+    "phrase": [
+      "5dd93697ae229bcf46047f29173a7edf"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "d0aaf0fcde94a6d6583ec7fd89927ed1"
+    ],
+    "phrase": [
+      "5dd93697ae229bcf46047f29173a7edf"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "2bb3d86d95234affa7c5bd68c4bab606"
+    ],
+    "phrase": [
+      "d0a33aaeb397dc8b27cc08a024caf98e"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "e7c1559061eb3de3a59cd92f295eab75"
+    ],
+    "phrase": [
+      "247edb94d44823eab01d403544db8b40"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "1d7049a06c1b9a4010b54762e4868bc2"
+    ],
+    "phrase": [
+      "b4ebe3f519ec51d5bd5fc832345135db"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "b26ce20eb8b94bb4057079894058f73c"
+    ],
+    "phrase": [
+      "b4ebe3f519ec51d5bd5fc832345135db"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "55948c79ebfbf916d001b4982ec77ec1"
+    ],
+    "phrase": [
+      "b4ebe3f519ec51d5bd5fc832345135db"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "8e22d9d947eda4b6bfb8472fdf606036"
+    ],
+    "phrase": [
+      "b4ebe3f519ec51d5bd5fc832345135db"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "48ab39c0530e2481640609755c5b0b2d"
+    ],
+    "phrase": [
+      "b4ebe3f519ec51d5bd5fc832345135db"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "9e925e9341b490bfd3b4c4ca3b0c1ef2"
+    ],
+    "phrase": [
+      "76d3280175d04b6a5da29bcac0c26e42"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "8f7f10575bd1e39ac8cdd827891a463e"
+    ],
+    "phrase": [
+      "76d3280175d04b6a5da29bcac0c26e42"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "671b229988e56d0e14c182d509e71a02"
+    ],
+    "phrase": [
+      "786df56259079ba171f66fdf519ed4ed"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "8717cfca734e8987971f63b20eeb8024"
+    ],
+    "phrase": [
+      "786df56259079ba171f66fdf519ed4ed"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "fd1562614f1983c875db9c78c89e31f6"
+    ],
+    "phrase": [
+      "786df56259079ba171f66fdf519ed4ed"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "aae2c79f759fb88d776f2806f9c9b195"
+    ],
+    "phrase": [
+      "786df56259079ba171f66fdf519ed4ed"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "97bc592b27a9ada2d9a4bb418ed0ebed"
+    ],
+    "phrase": [
+      "505ccfb0e8b6f7ebf36cb0e99f3254ef"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "5effbe0e41e92397297a394eea9bc925"
+    ],
+    "phrase": [
+      "505ccfb0e8b6f7ebf36cb0e99f3254ef"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "da217c26976d7228f989a2d105c5939b"
+    ],
+    "phrase": [
+      "505ccfb0e8b6f7ebf36cb0e99f3254ef"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "ae74ea4e2e865ed3fd60c18a06e69c65"
+    ],
+    "phrase": [
+      "505ccfb0e8b6f7ebf36cb0e99f3254ef"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "43b5c9175984c071f30b873fdce0a000"
+    ],
+    "phrase": [
+      "505ccfb0e8b6f7ebf36cb0e99f3254ef"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "5d32adffd0776c2fa367ee5cc78a2739"
+    ],
+    "phrase": [
+      "505ccfb0e8b6f7ebf36cb0e99f3254ef"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "2c61ebff5a7f675451467527df66788d"
+    ],
+    "phrase": [
+      "eaa9c5c2f1eff446cba2a2793a20fc0b"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "9a4b6f884971dcb4a5172876b335baab"
+    ],
+    "phrase": [
+      "eaa9c5c2f1eff446cba2a2793a20fc0b"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "6fcc4b7d36184ba33346b4be2d5d8244"
+    ],
+    "phrase": [
+      "eaa9c5c2f1eff446cba2a2793a20fc0b"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "513409e6b120a52ee0562171a0a83c92"
+    ],
+    "phrase": [
+      "eaa9c5c2f1eff446cba2a2793a20fc0b"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "39c8942e1038872a822c0dc75eedbde3"
+    ],
+    "phrase": [
+      "f12e4aca663eea3ddfccac53633e6864"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "6c6f2c8140c072d02803ceac95e2869d"
+    ],
+    "phrase": [
+      "f12e4aca663eea3ddfccac53633e6864"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "5ef3670f67cc7ced7c0d870e9b004b2f"
+    ],
+    "phrase": [
+      "f12e4aca663eea3ddfccac53633e6864"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "cc70865f1ecd933ec055851deb5bd69a"
+    ],
+    "phrase": [
+      "5f3cf4472ed57ecf454c60002a0142ab"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "3bd0fe418e46dc128a123985325ef9a5"
+    ],
+    "phrase": [
+      "5f3cf4472ed57ecf454c60002a0142ab"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "c3ab4f4e83227c0899a50519cc01b5f5"
+    ],
+    "phrase": [
+      "5f3cf4472ed57ecf454c60002a0142ab"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "013cf261f9ccf5d4f027bc001d0d1d0c"
+    ],
+    "phrase": [
+      "8b9a14d93c3e810a623e97a39a231353"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "26598960fdfe522b688bd8bc44c3ccba"
+    ],
+    "phrase": [
+      "9807ef70128014e54018abc136982951"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "b807023f87e63b8ada92f79f546ff9cc"
+    ],
+    "phrase": [
+      "9807ef70128014e54018abc136982951"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "92aad1c1b7d9b7930df3639a05b0a6ac"
+    ],
+    "phrase": [
+      "9807ef70128014e54018abc136982951"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "4c2dbdc51873a05f46615c4b15d78a9c"
+    ],
+    "phrase": [
+      "9807ef70128014e54018abc136982951"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "6f129a2e6e103ea342a085875931830b"
+    ],
+    "phrase": [
+      "9807ef70128014e54018abc136982951"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "ff1ccf57e98c817df1efcd9fe44a8aeb"
+    ],
+    "phrase": [
+      "ab4a85fc2ec4cf830e0f84aaacefcb1c"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "0b3b97fa66886c5688ee4ae80ec0c3c2"
+    ],
+    "phrase": [
+      "ab4a85fc2ec4cf830e0f84aaacefcb1c"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "3aa0f8d2ed4d66f0f44a08593af7dc39"
+    ],
+    "phrase": [
+      "ab4a85fc2ec4cf830e0f84aaacefcb1c"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "162e31afc5ade88a04d3f428e97e8f46"
+    ],
+    "phrase": [
+      "ab4a85fc2ec4cf830e0f84aaacefcb1c"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "7b405bd33ce7f19334d024f15bac5408"
+    ],
+    "phrase": [
+      "79b197abe7737ac96e50a12f09f58ed3"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "fe71f69039d6161cca3e8cdd2b1a1b97"
+    ],
+    "phrase": [
+      "79b197abe7737ac96e50a12f09f58ed3"
+    ]
+  }
+},
+{
+  "model": "putonghua.chinesephrasetoenglish",
+  "fields": {
+    "rank": 0,
+    "englishtranslation": [
+      "db37914ffee464d5b019f2f57cf52bf4"
+    ],
+    "phrase": [
+      "79b197abe7737ac96e50a12f09f58ed3"
+    ]
+  }
+}
+]

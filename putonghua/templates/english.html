@@ -1,26 +1,37 @@
-<html>
-  <title>Translation Builder</title>
-  <body>
-    <h1>Translation Builder</h1>
-    <h3>{{ phrase_translation.simplified }}</h3>
-    <h3>{{ phrase_translation.pinyin }}</h3>
-    <form method="POST" action="/putonghua/{{ phrase_translation.simplified }}/new_pinyin">
-      <input name="pinyin" id="id_new_pinyin" placeholder="Your updated pinyin here" />
-      {% csrf_token %}
-    </form>
-    <h3>{{ phrase_translation.english }}</h3>
-    <form method="POST" action="/putonghua/{{ phrase_translation.simplified }}/new_translation">
-      <input name="english" id="id_new_english" placeholder="Your English translation here" />
-      {% csrf_token %}
-    </form>
+{% extends 'base.html' %}
+
+{% block header_text %}Translation Builder{% endblock %}
+{% block phrase_result %}
+    <h2>Results:</h2>
+    <div class="text-center">
+      <h3>{{ phrase_translation.simplified }}</h3>
+      <h3>{{ phrase_translation.pinyin }}</h3>
+      <form method="POST" action="/putonghua/{{ phrase_translation.simplified }}/new_pinyin">
+	<input name="pinyin" id="id_new_pinyin" size="50"
+	       placeholder="Your updated pinyin here" />
+	{% csrf_token %}
+      </form>
+      {% if phrase_translation.english %}
+        <h3>{{ phrase_translation.english }}</h3>
+      {% else %}
+        <h3><i>no translation found</i></h3>
+      {% endif %}
+      <form method="POST" action="/putonghua/{{ phrase_translation.simplified }}/new_translation">
+	<input name="english" id="id_new_english" size="50"
+	       placeholder="Your English translation here" />
+	{% csrf_token %}
+      </form>
+    </div>
+{% endblock %}
+
+{% block table %}
     <table id="id_definitions_table">
       {% for definition in definitions %}
         <tr>
-	  <td>{{ definition.simplified }}</td>
+	  <td><a href="{% url 'view_english' definition.simplified %}">{{ definition.simplified }}</a></td>
 	  <td>{{ definition.pinyin }}</td>
 	  <td>{{ definition.english }}</td>
 	</tr>
       {% endfor %}
     </table>
-  </body>
-</html>
+{% endblock %}

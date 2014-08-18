@@ -1,11 +1,11 @@
-from django.test import LiveServerTestCase
+from django.contrib.staticfiles.testing import StaticLiveServerCase
 from django.utils.encoding import iri_to_uri
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import unittest
 
-class NewVisitorTest(LiveServerTestCase):
-    fixtures = ['simplified_characters.json',]
+class NewVisitorTest(StaticLiveServerCase):
+    fixtures = ['five_hundred_chars.json',]
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -28,12 +28,13 @@ class NewVisitorTest(LiveServerTestCase):
         self.assertEqual(input_box.get_attribute('placeholder'), '普通话')
 
         # Steve enters a phrase he'd like to translate
-        input_box.send_keys('我会说一点普通话')
+        chinese_phrase = '我会说一点中文'  # '我会说一点普通话'
+        input_box.send_keys(chinese_phrase)
         input_box.send_keys(Keys.ENTER)
 
         # After he hits Enter, he is taken to a new URL for his phrase/sentence
         phrase_url = self.browser.current_url
-        self.assertRegex(phrase_url, iri_to_uri('/putonghua/我会说一点普通话/english/'))
+        self.assertRegex(phrase_url, iri_to_uri('/putonghua/{}/english/'.format(chinese_phrase)))
 
         # After the phrase is entered definitions are shown for the characters and words
         # and a new text box appears for the user to enter their translation
@@ -50,6 +51,28 @@ class NewVisitorTest(LiveServerTestCase):
         # check boxes next to each character and word
 
         # The user then marks the Chinese characters and the corresponding English and hits submit
+
+
+    def test_layout_and_styling(self):
+        # Steve's looks more closely at home page design
+        self.browser.get(self.live_server_url)
+        self.browser.set_window_size(1024, 768)
+
+        # He notices the input box is nicely centered
+        inputbox = self.browser.find_element_by_id('id_new_phrase')
+        self.assertAlmostEqual((inputbox.location['x'] + 
+                                inputbox.size['width'] / 2), 512, delta=5)
+
+        # He does a definition lookup and finds things centered there too
+        inputbox.send_keys('你好')
+        inputbox.send_keys(Keys.ENTER)
+
+        inputbox = self.browser.find_element_by_id('id_new_english')
+        self.assertAlmostEqual((inputbox.location['x'] + 
+                                inputbox.size['width'] / 2), 512, delta=5)
+
+
+                               
 
 
 if __name__ == '__main__':

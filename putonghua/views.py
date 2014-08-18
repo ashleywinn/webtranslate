@@ -31,6 +31,9 @@ def new_translation(request, chinese_phrase):
     if english_text != '':
         phrase = add_chinese_phrase(chinese_phrase)
         add_english_definition(phrase, english_text)
+        if not phrase.pinyin:
+            phrase.pinyin = get_phrase_pinyin(chinese_phrase)
+            phrase.save()
     return redirect('/putonghua/{}/english/'.format(chinese_phrase))
 
 def new_pinyin(request, chinese_phrase):
