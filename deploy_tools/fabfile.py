@@ -1,0 +1,80 @@
+from fabric.contrib.files import append, exists, sed
+from fabric.api import env, local, run, settings
+import random
+
+REPO_URL = 'https://github.com/ashleywinn/webtranslate.git'
+
+def deploy():
+  site_folder = '/home/%s/sites/%s' % (env.user, env.host)
+  source_folder = site_folder + '/source'
+  _create_directory_structure_if_necessary(site_folder)
+  _get_latest_source(source_folder)
+  _update_settings(source_folder, env.host)
+  _update_virtualenv(source_folder)
+  _update_static_files(source_folder)
+  _update_database(source_folder)
+
+
+def _create_postgres_user(username, pwd):
+  with settings(prompts={'Enter password for new role: ' : pwd,
+                         'Enter it again: ' : pwd}):
+    run('createuser --pwprompt --createdb %s' % (username,))
+    run('createdb %s' % (username,))
+  
+  
+def _create_directory_structure_if_necessary(site_folder):
+  for subfolder in ('static', 'venv', 'source'):
+    run('mkdir -p %s/%s' % (site_folder, subfolder))
+    
+def _get_latest_source(source_folder):
+  if exists(source_folder + '/.git'):
+    run('cd %s && git fetch' % (source_folder,))
+  else:
+    run('git clone %s %s' % (REPO_URL, source_folder))
+  current_commit = local("git log -n 1 --format=%H", capture=True)
+  run('cd %s && git reset --hard %s' % (source_folder, current_commit))
+
+def _create_secrets_file(secrets_file, site_name):
+  if not exists(secrets_file):
+    chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
+    db_user = site_name.replace('.','').replace('-','')
+    db_pwd = ''.join(random.SystemRandom().choice(chars) for _ in range(40))
+    django_key = ''.join(random.SystemRandom().choice(chars) for _ in range(50))
+    _create_postgres_user(db_user, db_pwd)
+    append(secrets_file,  "SECRET_KEY = '%s'" % (django_key,))
+    append(secrets_file,  "DATABASES = {")
+    append(secrets_file,  "    'default': {")
+    append(secrets_file,  "          'ENGINE': 'django.db.backends.postgresql_psycopg2',")
+    append(secrets_file,  "            'NAME': '%s'," % (db_user,))
+    append(secrets_file,  "            'USER': '%s'," % (db_user,))
+    append(secrets_file,  "        'PASSWORD': '%s'," % (db_pwd,))
+    append(secrets_file,  "    }")
+    append(secrets_file,  "}")
+  
+def _update_settings(source_folder, site_name):
+  settings_path = source_folder + '/webtranslate/settings.py'
+  sed(settings_path, "DEBUG = True", "DEBUG = False")
+  sed(settings_path,
+    'ALLOWED_HOSTS =.+$',
+    'ALLOWED_HOSTS = ["%s"]' % (site_name,)
+    )
+  secrets_file = source_folder + '/webtranslate/secrets.py'
+  if not exists(secrets_file):
+    _create_secrets_file(secrets_file, site_name)
+  append(settings_path, '\nfrom .secrets import SECRET_KEY')
+  append(settings_path, '\nfrom .secrets import DATABASES')
+  
+def _update_virtualenv(source_folder):
+  virtualenv_folder = source_folder + '/../venv'
+  if not exists(virtualenv_folder + '/bin/pip'):
+    run('virtualenv --python=python3.4 %s' % (virtualenv_folder,))
+  run('%s/bin/pip install -r %s/requirements.txt' % (
+        virtualenv_folder, source_folder))
+        
+def _update_static_files(source_folder):
+  run('cd %s && ../venv/bin/python manage.py collectstatic --noinput' % (
+      source_folder,))
+      
+def _update_database(source_folder):
+  run('cd %s && ../venv/bin/python manage.py migrate --noinput' % (
+      source_folder,))
