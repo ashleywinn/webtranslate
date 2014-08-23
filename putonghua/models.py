@@ -1,16 +1,16 @@
 from django.db import models
 from hashlib import md5
+from django.core.exceptions import ObjectDoesNotExist
 
 def hashtext(txt):
     return md5(txt.casefold().encode()).hexdigest()
 
 def get_create_EnglishTranslation(english):
     english_hash = hashtext(english)
-    try: 
-        return EnglishTranslation.objects.get(eng_md5=english_hash)
-    except EnglishTranslation.DoesNotExist:
-        return EnglishTranslation.objects.create(english=english)
-    
+    eng_trans, created = EnglishTranslation.objects.get_or_create(eng_md5=english_hash,
+                                                                  english=english)
+    return eng_trans
+
 
 class ChineseEnglishTranslation(object):
     def __init__(self, simplified='', pinyin='', english=''):
@@ -54,12 +54,16 @@ class Character(models.Model):
                                             through='CharPinyinEnglish')
     freq_score   = models.PositiveSmallIntegerField(default=0)  # (0-999) log1p(x / 50000)
 
-    def add_english_translation_and_pinyin(self, english, pinyin,
+    def add_english_translation_and_pinyin(self, english, pinyin='',
                                            rank=0):
+        if pinyin == '':
+            pinyin = self.pinyin
+            
         try:
             connect = self.translations.get(eng_md5=hashtext(english))
-            connect.rank = rank
-            connect.save()
+            if rank > 0:
+                connect.rank = rank
+                connect.save()
             return
         except EnglishTranslation.DoesNotExist: 
             pass
@@ -132,10 +136,10 @@ class ChinesePhrase(models.Model):
         self.phrase_md5 = hashtext(self.simplified)
         self.save()
 
-    # def save(self, *args, **kwargs):
-        # self.length = len(self.simplified)
-        # self.phrase_md5 = hashtext(self.simplified)
-        # super(ChinesePhrase, self).save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        self.length = len(self.simplified)
+        self.phrase_md5 = hashtext(self.simplified)
+        super(ChinesePhrase, self).save(*args, **kwargs)
 
     def natural_key(self):
         return (self.phrase_md5,)
@@ -189,6 +193,44 @@ class ChinesePhraseToEnglish(models.Model):
         return (self.englishtranslation, self.phrase)
 
 
+class ChineseWordManager(models.Manager):
+    def get_by_natural_key(self, character, phrase):
+        return self.get(character=character, phrase=phrase)
+
+    def get_simplified_exact(self, simplified):
+        try: return self.get(character__char=simplified)
+        except ObjectDoesNotExist:  pass
+
+        try: return self.get(phrase__simplified=simplified)
+        except ObjectDoesNotExist:  raise ChineseWord.DoesNotExist
+
+
+class ChineseWord(models.Model):
+    objects = ChineseWordManager()
+
+    character    = models.OneToOneField(Character, null=True)
+    phrase       = models.OneToOneField(ChinesePhrase, null=True)
+    classifiers  = models.CharField(max_length=8, blank=True)
+
+    def natural_key(self):
+        return (self.character, self.phrase)
+
+    def add_definition(self, english, pinyin='', rank=0):
+        try:
+            self.character.add_english_translation_and_pinyin(
+                english, pinyin, rank)
+        except AttributeError:
+            self.phrase.add_definition(english, rank)
+
+    def english_list(self):
+        try:
+            yield from self.character.english_list()
+        except AttributeError:
+            yield from self.phrase.english_list()
+            
+
+
+
 class SubtlexCharData(models.Model):
     character  = models.OneToOneField(Character)
     count      = models.PositiveIntegerField()
@@ -200,27 +242,9 @@ class SubtlexWordData(models.Model):
 
 class ChineseHskWord(models.Model):
     hsk_list     = models.PositiveSmallIntegerField()
-    character    = models.OneToOneField(Character, null=True)
-    phrase       = models.OneToOneField(ChinesePhrase, null=True)
-    definitions  = models.ManyToManyField(EnglishTranslation,
-                                          through='HskWordToEnglish')
+    chineseword  = models.OneToOneField(ChineseWord, null=True)
     
     def add_definition(self, pinyin, english, rank):
-        try: 
-            self.definitions.get(eng_md5=hashtext(english))
-            return
-        except EnglishTranslation.DoesNotExist:
-            pass
-        definition = get_create_EnglishTranslation(english)
-        HskWordToEnglish.objects.create(englishtranslation=definition,
-                                        chinesehskword=self,
-                                        pinyin=pinyin,
-                                        rank=rank)
-
-class HskWordToEnglish(models.Model):
-    englishtranslation = models.ForeignKey(EnglishTranslation)
-    chinesehskword     = models.ForeignKey(ChineseHskWord)
-    pinyin             = models.CharField(max_length=32)
-    rank               = models.PositiveSmallIntegerField()
+        self.chineseword.add_definition(english, pinyin, rank)
 
 

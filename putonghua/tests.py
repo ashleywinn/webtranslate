@@ -1,3 +1,5 @@
+import os
+from django.conf import settings
 from django.core.urlresolvers import resolve
 from django.test import TestCase
 from django.http import HttpRequest
@@ -5,8 +7,13 @@ from django.template.loader import render_to_string
 from django.utils.encoding import iri_to_uri
 from putonghua.views import home_page
 from putonghua.models import Character, ChinesePhrase
+from putonghua.models import ChineseWord
+
+from putonghua.dictionary import upload_hsk_list_file
 from putonghua.dictionary import get_phrase_pinyin
 import re
+
+TEST_RESOURCES = os.path.abspath(os.path.join(settings.BASE_DIR, 'putonghua/test_resources'))
 
 class HomePageTest(TestCase):
 
@@ -57,6 +64,21 @@ class NewTranslationTest(TestCase):
     def test_redirects_after_POST(self):
         response = self.post_new_translation('你好', 'hi')
         self.assertRedirects(response, iri_to_uri('/putonghua/你好/english/'))
+
+
+class HskWordsTest(TestCase):
+    
+    def setUp(self):
+        example_file_1 = os.path.join(TEST_RESOURCES, 'hsk_example_file_1.txt')
+        example_file_2 = os.path.join(TEST_RESOURCES, 'hsk_example_file_2.txt')
+        upload_hsk_list_file(hsk_list_file=example_file_1, list_number=1)
+        upload_hsk_list_file(hsk_list_file=example_file_2, list_number=2)
+
+    def test_can_lookup_hsk_words(self):
+        word = ChineseWord.objects.get_simplified_exact('做')
+        self.assertIn('make', [eng for eng in word.english_list()])
+        word = ChineseWord.objects.get_simplified_exact('我们')
+        self.assertIn('we', [eng for eng in word.english_list()])
 
 
 class DictionaryModelTest(TestCase):

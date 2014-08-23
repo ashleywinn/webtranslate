@@ -1,10 +1,13 @@
 import re
 import math
+import unicodedata
+from itertools import zip_longest
 from django.core import serializers
 from django.db.models import Q, Sum, Max
 from putonghua.models import EnglishTranslation
 from putonghua.models import ChinesePhrase, ChinesePhraseToEnglish
 from putonghua.models import Character, CharPinyinEnglish
+from putonghua.models import ChineseWord
 from putonghua.models import ChineseHskWord
 from putonghua.models import SubtlexCharData, SubtlexWordData
 from putonghua.CsvUtil import csv_dict_iter
@@ -56,26 +59,38 @@ def serialize_characters_and_phrases_with_freq(phrase_score, char_score, outfile
                                   use_natural_foreign_keys=True,
                                   stream=out)
 
-
-
-    
-    
-
-
 def upload_hsk_list_file(hsk_list_file, list_number):
     list_number = int(list_number)
+    no_break_char = unicodedata.lookup("ZERO WIDTH NO-BREAK SPACE")
     for line in open(hsk_list_file):
         try:
             (simplified, traditional, 
              pinyin, pinyin2, definitions) = line.split('\t', maxsplit=4)
         except ValueError:
             continue
-        simplified = simplified.strip()
+        simplified = simplified.strip().replace(no_break_char, '')
         definitions = [define.strip() for define in definitions.split(';')]
+        pinyin = pinyin.split(',', 2)[0]
         pinyin = re.sub(r"([0-5])", r"\1 ", pinyin).strip()
         add_hsk_word(list_number, simplified, pinyin, definitions)
 
+
 def add_hsk_word(hsk_list, simplified, pinyin, definitions):
+    try:
+        chineseword = ChineseWord.objects.get_simplified_exact(
+                                                       simplified=simplified)
+    except ChineseWord.DoesNotExist:
+        chineseword = add_chinese_word(simplified, pinyin)
+
+    hsk_word, created = ChineseHskWord.objects.get_or_create(
+                                               chineseword=chineseword,
+                                               defaults={'hsk_list': hsk_list})
+    for i, definition in enumerate(definitions):
+        hsk_word.add_definition(pinyin, definition, i + 1)
+    return hsk_word
+
+
+def add_chinese_word(simplified, pinyin, definitions=[], ranks=[]):
     character = None
     phrase = None
     if len(simplified) == 1:
@@ -91,15 +106,13 @@ def add_hsk_word(hsk_list, simplified, pinyin, definitions):
         except ChinesePhrase.DoesNotExist:
             phrase = ChinesePhrase.objects.create(simplified=simplified, 
                                                   pinyin=pinyin)
-    try:
-        hsk_word = ChineseHskWord.objects.get(character=character,
-                                              phrase=phrase)
-    except ChineseHskWord.DoesNotExist:
-        hsk_word = ChineseHskWord.objects.create(hsk_list=hsk_list,
-                                                 character=character,
-                                                 phrase=phrase)
-    for i, definition in enumerate(definitions):
-        hsk_word.add_definition(pinyin, definition, i + 1)
+    
+    word, created = ChineseWord.objects.get_or_create(character=character,
+                                                      phrase=phrase)
+    assert(len(definitions) >= len(ranks))
+    for definition, rank in zip_longest(definitions, ranks, fillvalue=0):
+        word.add_definition(definition, pinyin, rank)
+    return word
 
 
 def upload_subtlex_char_data(infile):

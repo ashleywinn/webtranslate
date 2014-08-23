@@ -30,6 +30,16 @@ class NewVisitorTest(StaticLiveServerCase):
     def tearDown(self):
         self.browser.quit()
 
+    def test_can_view_list_of_hsk_words(self):
+        self.browser.get(self.server_url)
+        self.browser.find_element_by_link_text('HSK Words').click()
+        table = self.browser.find_element_by_id('id_word_list')
+        rows = table.find_elements_by_tag_name('td')
+        self.assertIn('如果',      [row.text for row in rows])
+        self.assertIn('if',       [row.text for row in rows])
+        self.assertIn('ru2 guo3', [row.text for row in rows])
+        
+
     def test_can_enter_chinese_text_and_retrieve_it_later(self):
         # Steve goes to check out a new translation website
         self.browser.get(self.server_url)
