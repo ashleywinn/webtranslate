@@ -1,9 +1,15 @@
-import sys
+import sys, os
 from django.contrib.staticfiles.testing import StaticLiveServerCase
 from django.utils.encoding import iri_to_uri
+from django.conf import settings
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import unittest
+
+from django.core.management import call_command
+
+
+TEST_RESOURCES = os.path.abspath(os.path.join(settings.BASE_DIR, 'putonghua/test_resources'))
 
 class NewVisitorTest(StaticLiveServerCase):
     fixtures = ['five_hundred_chars.json',]
@@ -31,13 +37,21 @@ class NewVisitorTest(StaticLiveServerCase):
         self.browser.quit()
 
     def test_can_view_list_of_hsk_words(self):
+
+        call_command("load_hsk_list", 
+                     os.path.join(TEST_RESOURCES, 'hsk_example_file_1.txt'),
+                     list_num=1)
+
         self.browser.get(self.server_url)
-        self.browser.find_element_by_link_text('HSK Words').click()
-        table = self.browser.find_element_by_id('id_word_list')
+        self.browser.find_element_by_link_text('HSK Word Lists').click()
+
+        self.browser.implicitly_wait(10)
+
+        table = self.browser.find_element_by_id('id_word_table')
         rows = table.find_elements_by_tag_name('td')
-        self.assertIn('如果',      [row.text for row in rows])
-        self.assertIn('if',       [row.text for row in rows])
-        self.assertIn('ru2 guo3', [row.text for row in rows])
+        self.assertIn('商店',         [row.text for row in rows])
+        self.assertIn('shop',         [row.text for row in rows])
+        self.assertIn('shang1 dian4', [row.text for row in rows])
         
 
     def test_can_enter_chinese_text_and_retrieve_it_later(self):

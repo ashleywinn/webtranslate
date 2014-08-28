@@ -1,4 +1,4 @@
-from fabric.contrib.files import append, exists, sed
+from fabric.contrib.files import append, exists, sed, comment
 from fabric.api import env, local, run, settings
 import random
 
@@ -13,6 +13,10 @@ def deploy():
   _update_virtualenv(source_folder)
   _update_static_files(source_folder)
   _update_database(source_folder)
+
+def load_hsk_words():
+  source_folder = '/home/%s/sites/%s/source' % (env.user, env.host)
+  run('cd %s && ../venv/bin/python manage.py load_hsk_lists' % (source_folder,))
 
 
 def _create_postgres_user(username, pwd):
@@ -50,6 +54,14 @@ def _create_secrets_file(secrets_file, site_name):
     append(secrets_file,  "        'PASSWORD': '%s'," % (db_pwd,))
     append(secrets_file,  "    }")
     append(secrets_file,  "}")
+
+def _comment_databases_setting(settings_file):
+  comment(settings_file, """DATABASES = {'default':{""")
+  comment(settings_file, """'ENGINE': 'django.db.backends.postgresql_psycopg2',""")
+  comment(settings_file, """'NAME': 'django_putonghua_db',""")
+  comment(settings_file, """'USER': 'django_putonghua',""")
+  comment(settings_file, """'PASSWORD': 'froumlesefjamgxo'}}""")
+
   
 def _update_settings(source_folder, site_name):
   settings_path = source_folder + '/webtranslate/settings.py'
@@ -58,6 +70,8 @@ def _update_settings(source_folder, site_name):
     'ALLOWED_HOSTS =.+$',
     'ALLOWED_HOSTS = ["%s"]' % (site_name,)
     )
+  comment(settings_path, "SECRET_KEY =")
+  _comment_databases_setting(settings_path)
   secrets_file = source_folder + '/webtranslate/secrets.py'
   if not exists(secrets_file):
     _create_secrets_file(secrets_file, site_name)

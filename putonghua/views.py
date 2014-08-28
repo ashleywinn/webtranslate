@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
-from putonghua.models import ChineseEnglishTranslation
+from putonghua.models import ChineseEnglishTranslation, ChineseHskWord
 from putonghua.dictionary import find_definitions, add_chinese_phrase
 from putonghua.dictionary import add_english_definition, get_components_of_phrase
 from putonghua.dictionary import get_phrase_pinyin, update_phrase_pinyin
@@ -22,6 +22,11 @@ def get_definitions(chin_str):
     if len(chin_str) > 1:
         for component in get_components_of_phrase(chin_str):
             yield from find_up_to_n_definitions(4, component)
+
+def hsk_word_list_translations(list_number):
+    return [hsk.chinese_english_translation()
+            for hsk in ChineseHskWord.objects.filter(hsk_list=list_number)]
+
 
 def home_page(request):
     return render(request, 'home.html')
@@ -61,4 +66,22 @@ def view_english(request, chinese_phrase):
     return render(request, 'english.html',
                   {'phrase_translation'  : translation,
                    'definitions'         : definitions})
+
+def view_hsk_list(request, list_number):
+    list_number = int(list_number)
+    hsk_definitions = list(hsk_word_list_translations(list_number))
+    list_title = "HSK Word List {}".format(list_number)
+
+    available_lists = []
+    for i in range(1,7):
+        if i == list_number: active = True
+        else:                active = False
+        available_lists.append({'number': i,
+                                'name': "List {}".format(i),
+                                'active': active})
+
+    return render(request, 'hsk_list.html',
+                  {'list_title'     : list_title,
+                   'available_lists': available_lists,
+                   'hsk_words'      : hsk_definitions})
 

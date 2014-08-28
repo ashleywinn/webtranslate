@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block header_text %}Translation Builder{% endblock %}
+{% block main_container %}
+<div class="row">
+  <div class="col-sm-3 col-md-2 hidden-xs">
+    <form method="POST" action="/putonghua/new_chinese">
+      <div class="form-group">
+	<label>New Chinese Phrase:
+	  <input name="new_phrase" id="id_new_phrase" 
+		 class="form-control"
+		 placeholder="普通话"/>
+	</label>
+      </div>
+      {% csrf_token %}
+    </form>
+    <p>
+      <strong><a href="{% url 'view_hsk_list' 1 %}">HSK Word Lists</a></strong>
+    </p>
+  </div>
+  <div class="col-sm-9 col-md-10">
+    <div class="row">
+      <div class="col-sm-11 col-sm-offset-1 col-md-8">
+	{% block above_table_area %}
+	{% endblock %}
+      </div>
+    </div>
+    {% block table_area %}
+    {% endblock %}
+  </div>
+  <div class="col-xs-12 visible-xs-block">
+    <form method="POST" action="/putonghua/new_chinese">
+      <div class="form-group">
+	<label>New Chinese Phrase:
+	  <input name="new_phrase" id="id_new_phrase" 
+		 class="form-control"
+		 placeholder="普通话"/>
+	</label>
+      </div>
+      {% csrf_token %}
+    </form>
+    <p>
+      <strong><a href="{% url 'view_hsk_list' 1 %}">HSK Word Lists</a></strong>
+    </p>
+  </div>
+</div>
+{% endblock %}

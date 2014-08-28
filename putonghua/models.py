@@ -222,6 +222,18 @@ class ChineseWord(models.Model):
         except AttributeError:
             self.phrase.add_definition(english, rank)
 
+    def get_simplified(self):
+        try:
+            return self.character.char
+        except AttributeError:
+            return self.phrase.simplified
+        
+    def get_pinyin(self):
+        try:
+            return self.character.pinyin
+        except AttributeError:
+            return self.phrase.pinyin
+        
     def english_list(self):
         try:
             yield from self.character.english_list()
@@ -247,4 +259,8 @@ class ChineseHskWord(models.Model):
     def add_definition(self, pinyin, english, rank):
         self.chineseword.add_definition(english, pinyin, rank)
 
-
+    def chinese_english_translation(self):
+        return ChineseEnglishTranslation(
+            simplified=self.chineseword.get_simplified(),
+            pinyin=self.chineseword.get_pinyin(),
+            english=[eng for eng in self.chineseword.english_list()][0])

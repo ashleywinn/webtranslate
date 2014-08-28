@@ -1,4 +1,23 @@
 {% extends 'base.html' %}
 
 {% block header_text %}Translation Builder{% endblock %}
-{% block subheader_text %}Enter a sentence or phrase in Chinese{% endblock %}
+{% block main_container %}
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="text-center">
+      <h3>Enter a sentence or phrase in Chinese</h3>
+
+      <form method="POST" action="/putonghua/new_chinese">
+	<label>New Chinese Phrase:
+	  <input name="new_phrase" id="id_new_phrase" 
+		 placeholder="普通话" size="50" />
+	</label>
+	{% csrf_token %}
+      </form>
+      <h2>
+	<a href="{% url 'view_hsk_list' 1 %}">HSK Word Lists</a>
+      </h2>
+    </div>
+  </div>
+</div>
+{% endblock %}

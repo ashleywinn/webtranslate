@@ -7,7 +7,7 @@ from django.template.loader import render_to_string
 from django.utils.encoding import iri_to_uri
 from putonghua.views import home_page
 from putonghua.models import Character, ChinesePhrase
-from putonghua.models import ChineseWord
+from putonghua.models import ChineseWord, ChineseHskWord
 
 from putonghua.dictionary import upload_hsk_list_file
 from putonghua.dictionary import get_phrase_pinyin
@@ -79,6 +79,24 @@ class HskWordsTest(TestCase):
         self.assertIn('make', [eng for eng in word.english_list()])
         word = ChineseWord.objects.get_simplified_exact('我们')
         self.assertIn('we', [eng for eng in word.english_list()])
+
+    def test_can_get_hsk_lists(self):
+        list1_words = ['谢谢', '下', '大', '工作', '怎么样']
+        list2_words = ['啊', '跟', '自己', '电子邮件', '感兴趣']
+
+        word_list = [hsk.chineseword.get_simplified() 
+                     for hsk in ChineseHskWord.objects.filter(hsk_list=1)]
+        for simp in list1_words:
+            self.assertIn(simp, word_list)
+        for simp in list2_words:
+            self.assertNotIn(simp, word_list)
+
+        word_list = [hsk.chineseword.get_simplified() 
+                     for hsk in ChineseHskWord.objects.filter(hsk_list=2)]
+        for simp in list2_words:
+            self.assertIn(simp, word_list)
+        for simp in list1_words:
+            self.assertNotIn(simp, word_list)
 
 
 class DictionaryModelTest(TestCase):
