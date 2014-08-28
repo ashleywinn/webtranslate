@@ -57,11 +57,12 @@ WSGI_APPLICATION = 'webtranslate.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 # - condensed this so it would be easier to remove with a regex
-DATABASES = {'default':{
-          'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'django_putonghua_db',
-            'USER': 'django_putonghua',
-        'PASSWORD': 'froumlesefjamgxo'}}
+# - changing to double-quotes because of fabric bug
+DATABASES = {"default":{
+          "ENGINE": "django.db.backends.postgresql_psycopg2",
+            "NAME": "django_putonghua_db",
+            "USER": "django_putonghua",
+        "PASSWORD": "froumlesefjamgxo"}}
 
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/

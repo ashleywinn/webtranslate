@@ -56,11 +56,11 @@ def _create_secrets_file(secrets_file, site_name):
     append(secrets_file,  "}")
 
 def _comment_databases_setting(settings_file):
-  comment(settings_file, """DATABASES = {'default':{""")
-  comment(settings_file, """'ENGINE': 'django.db.backends.postgresql_psycopg2',""")
-  comment(settings_file, """'NAME': 'django_putonghua_db',""")
-  comment(settings_file, """'USER': 'django_putonghua',""")
-  comment(settings_file, """'PASSWORD': 'froumlesefjamgxo'}}""")
+  comment(settings_file, '''DATABASES =''', char='# ') # {"default':{''')
+  comment(settings_file, '''\s+"ENGINE": "django.db.backends.postgresql_psycopg2",''')
+  comment(settings_file, '''\s+"NAME": "django_putonghua_db",''')
+  comment(settings_file, '''\s+"USER": "django_putonghua",''')
+  comment(settings_file, '''\s+"PASSWORD": "froumlesefjamgxo"}}''')
 
   
 def _update_settings(source_folder, site_name):
