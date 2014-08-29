@@ -11,8 +11,7 @@ from django.core.management import call_command
 
 TEST_RESOURCES = os.path.abspath(os.path.join(settings.BASE_DIR, 'putonghua/test_resources'))
 
-class NewVisitorTest(StaticLiveServerCase):
-    fixtures = ['five_hundred_chars.json',]
+class FunctionalTest(StaticLiveServerCase):
 
     @classmethod
     def setUpClass(cls):
@@ -28,31 +27,16 @@ class NewVisitorTest(StaticLiveServerCase):
         if cls.server_url == cls.live_server_url:
             super().tearDownClass()
 
-
     def setUp(self):
         self.browser = webdriver.Firefox()
-        self.browser.implicitly_wait(3)
+        # self.browser.implicitly_wait(3)
 
     def tearDown(self):
         self.browser.quit()
 
-    def test_can_view_list_of_hsk_words(self):
 
-        call_command("load_hsk_list", 
-                     os.path.join(TEST_RESOURCES, 'hsk_example_file_1.txt'),
-                     list_num=1)
-
-        self.browser.get(self.server_url)
-        self.browser.find_element_by_link_text('HSK Word Lists').click()
-
-        self.browser.implicitly_wait(10)
-
-        table = self.browser.find_element_by_id('id_word_table')
-        rows = table.find_elements_by_tag_name('td')
-        self.assertIn('商店',         [row.text for row in rows])
-        self.assertIn('shop',         [row.text for row in rows])
-        self.assertIn('shang1 dian4', [row.text for row in rows])
-        
+class NewVisitorTest(FunctionalTest):
+    fixtures = ['five_hundred_chars.json',]
 
     def test_can_enter_chinese_text_and_retrieve_it_later(self):
         # Steve goes to check out a new translation website
@@ -82,7 +66,7 @@ class NewVisitorTest(StaticLiveServerCase):
         rows = table.find_elements_by_tag_name('td')
         self.assertIn('说', [row.text for row in rows])
         self.assertIn('shuo1', [row.text for row in rows])
-        self.assertIn('to say', [row.text for row in rows])
+        self.assertIn('to explain', [row.text for row in rows])
         self.assertIn('一', [row.text for row in rows])
         self.assertIn('yi1', [row.text for row in rows])
         self.assertIn('one', [row.text for row in rows])
@@ -92,6 +76,26 @@ class NewVisitorTest(StaticLiveServerCase):
 
         # The user then marks the Chinese characters and the corresponding English and hits submit
 
+
+class HskWordListTest(FunctionalTest):
+
+    def test_can_view_list_of_hsk_words(self):
+
+        call_command("load_hsk_list", 
+                     os.path.join(TEST_RESOURCES, 'hsk_example_file_1.txt'),
+                     list_num=1)
+
+        self.browser.get(self.server_url)
+        self.browser.find_element_by_link_text('HSK Word Lists').click()
+
+        table = self.browser.find_element_by_id('id_word_table')
+        rows = table.find_elements_by_tag_name('td')
+        self.assertIn('商店',         [row.text for row in rows])
+        self.assertIn('shop',         [row.text for row in rows])
+        self.assertIn('shang1 dian4', [row.text for row in rows])
+
+        
+class LayoutAndStylingTest(FunctionalTest):
 
     def test_layout_and_styling(self):
         # Steve's looks more closely at home page design
@@ -107,9 +111,10 @@ class NewVisitorTest(StaticLiveServerCase):
         inputbox.send_keys('你好')
         inputbox.send_keys(Keys.ENTER)
 
+        self.browser.implicitly_wait(2)
+
         inputbox = self.browser.find_element_by_id('id_new_english')
-        self.assertAlmostEqual((inputbox.location['x'] + 
-                                inputbox.size['width'] / 2), 512, delta=5)
+        self.assertAlmostEqual(inputbox.location['x'], 275, delta=10)
 
 
                                

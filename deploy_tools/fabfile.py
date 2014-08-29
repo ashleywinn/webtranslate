@@ -1,8 +1,9 @@
 from fabric.contrib.files import append, exists, sed, comment
-from fabric.api import env, local, run, settings
+from fabric.api import env, local, run, settings, sudo
 import random
 
 REPO_URL = 'https://github.com/ashleywinn/webtranslate.git'
+
 
 def deploy():
   site_folder = '/home/%s/sites/%s' % (env.user, env.host)
@@ -13,6 +14,7 @@ def deploy():
   _update_virtualenv(source_folder)
   _update_static_files(source_folder)
   _update_database(source_folder)
+  _restart_gunicorn(env.host)
 
 def load_hsk_words():
   source_folder = '/home/%s/sites/%s/source' % (env.user, env.host)
@@ -92,3 +94,6 @@ def _update_static_files(source_folder):
 def _update_database(source_folder):
   run('cd %s && ../venv/bin/python manage.py migrate --noinput' % (
       source_folder,))
+
+def _restart_gunicorn(site_name):
+  sudo('service gunicorn-%s restart' % (site_name,))
