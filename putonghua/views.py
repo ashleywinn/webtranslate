@@ -31,6 +31,12 @@ def hsk_word_list_translations(list_number):
 def home_page(request):
     return render(request, 'home.html')
 
+def new_chinese(request):
+    new_phrase_text = request.POST.get('new_phrase', '').strip()
+    if new_phrase_text == '':
+        return redirect('/')
+    return redirect('/putonghua/{}/english/'.format(new_phrase_text))
+
 def new_translation(request, chinese_phrase):
     english_text = request.POST.get('english', '').strip()
     if english_text != '':
@@ -47,12 +53,6 @@ def new_pinyin(request, chinese_phrase):
         phrase = add_chinese_phrase(chinese_phrase)
         update_phrase_pinyin(phrase, pinyin_text)
     return redirect('/putonghua/{}/english/'.format(chinese_phrase))
-
-def new_chinese(request):
-    new_phrase_text = request.POST.get('new_phrase', '').strip()
-    if new_phrase_text == '':
-        return redirect('/')
-    return redirect('/putonghua/{}/english/'.format(new_phrase_text))
 
 def view_english(request, chinese_phrase):
     translation = find_first_definition(chinese_phrase)
