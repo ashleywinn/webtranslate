@@ -1,15 +1,7 @@
-import os.path
-from django.conf import settings
 from django.test import TestCase
 from django.utils.encoding import iri_to_uri
 from putonghua.models import Character, ChinesePhrase
-from putonghua.models import ChineseWord, ChineseHskWord
-
-from putonghua.dictionary import upload_hsk_list_file
 from putonghua.dictionary import get_phrase_pinyin
-
-TEST_RESOURCES = os.path.abspath(os.path.join(settings.BASE_DIR, 'putonghua/tests/resources'))
-
         
 
 # class TranslationViewTest(TestCase):
@@ -40,39 +32,6 @@ class NewTranslationTest(TestCase):
     def test_redirects_after_POST(self):
         response = self.post_new_translation('你好', 'hi')
         self.assertRedirects(response, iri_to_uri('/putonghua/你好/english/'))
-
-
-class HskWordsTest(TestCase):
-    
-    def setUp(self):
-        example_file_1 = os.path.join(TEST_RESOURCES, 'hsk_example_file_1.txt')
-        example_file_2 = os.path.join(TEST_RESOURCES, 'hsk_example_file_2.txt')
-        upload_hsk_list_file(hsk_list_file=example_file_1, list_number=1)
-        upload_hsk_list_file(hsk_list_file=example_file_2, list_number=2)
-
-    def test_can_lookup_hsk_words(self):
-        word = ChineseWord.objects.get_simplified_exact('做')
-        self.assertIn('make', [eng for eng in word.english_list()])
-        word = ChineseWord.objects.get_simplified_exact('我们')
-        self.assertIn('we', [eng for eng in word.english_list()])
-
-    def test_can_get_hsk_lists(self):
-        list1_words = ['谢谢', '下', '大', '工作', '怎么样']
-        list2_words = ['啊', '跟', '自己', '电子邮件', '感兴趣']
-
-        word_list = [hsk.chineseword.get_simplified() 
-                     for hsk in ChineseHskWord.objects.filter(hsk_list=1)]
-        for simp in list1_words:
-            self.assertIn(simp, word_list)
-        for simp in list2_words:
-            self.assertNotIn(simp, word_list)
-
-        word_list = [hsk.chineseword.get_simplified() 
-                     for hsk in ChineseHskWord.objects.filter(hsk_list=2)]
-        for simp in list2_words:
-            self.assertIn(simp, word_list)
-        for simp in list1_words:
-            self.assertNotIn(simp, word_list)
 
 
 class DictionaryModelTest(TestCase):

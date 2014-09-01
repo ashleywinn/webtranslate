@@ -94,6 +94,9 @@ def _update_static_files(source_folder):
 def _update_database(source_folder):
   run('cd %s && ../venv/bin/python manage.py migrate --noinput' % (
       source_folder,))
+  run('cd %s && ../venv/bin/python manage.py do_db_updates' % (
+      source_folder,))
+
 
 def _restart_gunicorn(site_name):
   sudo('service gunicorn-%s restart' % (site_name,))
