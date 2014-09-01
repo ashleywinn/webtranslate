@@ -1,0 +1,17 @@
+{% extends 'table_view_base.html' %}
+
+{% block above_table_area %}
+  <h3>Site Statistics</h3>
+{% endblock %}
+
+{% block table_area %}
+  <ul>
+  <table id="id_stats_table" class="table table-condensed">
+    {% for stat in site_stats %}
+    <tr>
+      <td nowrap="nowrap">{{ stat.title }}</a></td>
+      <td nowrap="nowrap">{{ stat.value }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

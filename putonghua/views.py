@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
+from putonghua.models import Character, ChinesePhrase, ChineseWord, ChineseName
 from putonghua.models import ChineseEnglishTranslation, ChineseHskWord
 from putonghua.dictionary import find_definitions, add_chinese_phrase
 from putonghua.dictionary import add_english_definition, get_components_of_phrase
@@ -84,4 +85,24 @@ def view_hsk_list(request, list_number):
                   {'list_title'     : list_title,
                    'available_lists': available_lists,
                    'hsk_words'      : hsk_definitions})
+
+def view_stats(request):
+    char_cnt = len(Character.objects.all())
+    phrase_cnt = len(ChinesePhrase.objects.all())
+    word_cnt = len(ChineseWord.objects.all())
+    name_cnt = len(ChineseName.objects.all())
+                   
+    site_stats = []
+    site_stats.append({'title' : 
+                       'Total Entries', 'value': phrase_cnt + char_cnt})
+    site_stats.append({'title' : 
+                       'Single Character Entries', 'value': char_cnt})
+    site_stats.append({'title' : 
+                       'Multi-Character Phrase Entries', 'value': phrase_cnt})
+    site_stats.append({'title' : 
+                       'Chinese Word Entries', 'value': word_cnt})
+    site_stats.append({'title' : 
+                       'Chinese Proper Names', 'value': name_cnt})
+    return render(request, 'view_stats.html',
+                  {'site_stats' : site_stats})
 
