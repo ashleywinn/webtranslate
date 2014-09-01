@@ -8,7 +8,7 @@ def hashtext(txt):
 def get_create_EnglishTranslation(english):
     english_hash = hashtext(english)
     eng_trans, created = EnglishTranslation.objects.get_or_create(eng_md5=english_hash,
-                                                                  english=english)
+                                                                  defaults={'english' : english})
     return eng_trans
 
 
@@ -32,9 +32,9 @@ class EnglishTranslation(models.Model):
     objects = EnglishTranslationManager();
 
     english = models.TextField()
-    eng_md5 = models.CharField(max_length=32)
+    eng_md5 = models.CharField(max_length=32, unique=True)
     is_name = models.BooleanField(default=False)
-    
+
     def save(self, *args, **kwargs):
         self.eng_md5 = hashtext(self.english)
         super(EnglishTranslation, self).save(*args, **kwargs)

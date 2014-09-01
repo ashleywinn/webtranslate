@@ -87,10 +87,10 @@ def view_hsk_list(request, list_number):
                    'hsk_words'      : hsk_definitions})
 
 def view_stats(request):
-    char_cnt = len(Character.objects.all())
-    phrase_cnt = len(ChinesePhrase.objects.all())
-    word_cnt = len(ChineseWord.objects.all())
-    name_cnt = len(ChineseName.objects.all())
+    char_cnt = Character.objects.all().count()
+    phrase_cnt = ChinesePhrase.objects.all().count()
+    word_cnt = ChineseWord.objects.all().count()
+    name_cnt = ChineseName.objects.all().count()
                    
     site_stats = []
     site_stats.append({'title' : 
