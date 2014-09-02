@@ -266,15 +266,20 @@ class ChineseWord(models.Model):
         except AttributeError:
             return self.phrase.pinyin
         
-    def english_list(self):
+    def _all_translations(self):
         try:
-            for connect in self.character.charpinyinenglish_set.order_by(
-                                     'rank').filter(englishtranslation__is_name=False):
-                yield connect.englishtranslation.english
+            yield from self.character.chinese_english_translations()
         except AttributeError:
-            for connect in self.phrase.chinesephrasetoenglish_set.order_by(
-                                     'rank').filter(englishtranslation__is_name=False):
-                yield connect.englishtranslation.english
+            yield from self.phrase.chinese_english_translations()
+
+    def chinese_english_translations(self):
+        for trans in self._all_translations():
+            if trans.is_name == False:
+                yield trans
+
+    def english_list(self):
+        for trans in self.chinese_english_translations():
+            yield trans.english
 
             
 class ChineseNameManager(models.Manager):
@@ -358,8 +363,15 @@ class ChineseHskWord(models.Model):
     def add_definition(self, pinyin, english, rank=999):
         self.chineseword.add_definition(english, pinyin, rank)
 
-    def chinese_english_translation(self):
-        return ChineseEnglishTranslation(
-            simplified=self.chineseword.get_simplified(),
-            pinyin=self.chineseword.get_pinyin(),
-            english=[eng for eng in self.chineseword.english_list()][0])
+    def chinese_english_translations(self):
+        yield from self.chineseword.chinese_english_translations()
+
+    def compact_english_translation(self, definition_cnt=3):
+        english_list = [eng for (i, eng) in 
+                        enumerate(self.chineseword.english_list()) 
+                        if (i < definition_cnt)]
+        return ChineseEnglishTranslation(simplified=self.chineseword.get_simplified(),
+                                         pinyin=self.chineseword.get_pinyin(),
+                                         english=' / '.join(english_list),
+                                         is_name=False)
+

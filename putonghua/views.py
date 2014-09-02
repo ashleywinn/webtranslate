@@ -25,7 +25,7 @@ def get_definitions(chin_str):
             yield from find_up_to_n_definitions(4, component)
 
 def hsk_word_list_translations(list_number):
-    return [hsk.chinese_english_translation()
+    return [hsk.compact_english_translation(definition_cnt=3)
             for hsk in ChineseHskWord.objects.filter(hsk_list=list_number)]
 
 
