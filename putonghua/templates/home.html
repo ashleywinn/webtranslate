@@ -7,9 +7,9 @@
     <div class="text-center">
       <h3>Enter a sentence or phrase in Chinese</h3>
 
-      <form method="POST" action="/putonghua/new_chinese">
+      <form method="POST" action="/putonghua/search_chinese">
 	<label>New Chinese Phrase:
-	  <input name="new_phrase" id="id_new_phrase" 
+	  <input name="search_phrase" id="id_chinese_search_phrase" 
 		 placeholder="普通话" size="50" />
 	</label>
 	{% csrf_token %}

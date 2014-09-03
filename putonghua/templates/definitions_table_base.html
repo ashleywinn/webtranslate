@@ -1,0 +1,29 @@
+{% extends 'table_view_base.html' %}
+
+{% block table_area %}
+  {% block table_header %}
+  {% endblock %}
+  <p></p>
+  <table id="id_word_table" class="table table-condensed">
+    {% regroup definitions by simplified as definition_groups %}
+    {% for definition_group in definition_groups %}
+       {% for definition in definition_group.list %}
+       <tr>
+	 {% if forloop.first %}
+	 <td rowspan="{{ definition_group.list|length }}">
+	   <a href="{% url 'view_english' definition.simplified %}">
+	     {% if definition.is_name %}
+	     <u>{{ definition.simplified }}</u>
+	     {% else %}
+	     {{ definition.simplified }}
+	     {% endif %}
+	   </a>
+	 </td>
+	 {% endif %}
+	 <td>{{ definition.pinyin }}</td>
+	 <td>{{ definition.english }}</td>
+       </tr>
+       {% endfor %}
+    {% endfor %}
+  </table>
+{% endblock %}

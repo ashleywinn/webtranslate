@@ -9,5 +9,10 @@ class Command(BaseCommand):
     help = 'Load the massive cedict file from the repository'
 
     def handle(self, *args, **options):
-        upload_cedict_file(os.path.join(DATA_RESOURCES, 'cedict_1_0_ts_utf-8_mdbg.txt'))
+        if len(args) == 0:
+            upload_cedict_file(os.path.join(DATA_RESOURCES, 'cedict_1_0_ts_utf-8_mdbg.txt'))
+
+        for arg in args:
+            upload_cedict_file(arg)
+            
 

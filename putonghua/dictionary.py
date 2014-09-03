@@ -187,6 +187,35 @@ def update_char_pinyin_from_hsk():
                 print("%s : %s -> %s" % (char.char, char.pinyin, hsk_pinyin))
 
 
+def get_toneless_pinyin_components(pinyin):
+    for pinyin_word in pinyin.split():
+        yield from get_recognized_components(pinyin_word, is_recognized_toneless_pinyin, 
+                                             max_len=25)
+
+def get_recognized_components(text, recognizer, max_len=100):
+    while len(text) > 1:
+        for i in range(len(text), 0, -1):
+            if i >= max_len: pass
+            if i == 1:
+                yield text[0]
+                text = text[1:]
+                break
+            if recognizer(text[0:i]):
+                yield text[0:i]
+                text = text[i:]
+                break
+    if len(text):
+        yield text
+
+
+def is_recognized_toneless_pinyin(pinyin):
+    if ChinesePhrase.objects.filter_tonelesspinyin_exact(pinyin).exists():
+        return True
+    if Character.objects.filter_tonelesspinyin_exact(pinyin).exists():
+        return True
+    return False
+
+
 def get_components_of_phrase(simplified):
     max_len = len(simplified)
     if max_len <= 1:
@@ -237,8 +266,7 @@ def find_definitions(simplified):
     else:
         matches = ChinesePhrase.objects.filter(simplified=simplified)
     for match in matches:
-        for trans in match.chinese_english_translations():
-            yield trans
+        yield from match.compact_english_translations()
 
 
 def get_chinese_phrases(simplified):

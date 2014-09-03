@@ -4,12 +4,12 @@
 {% block main_container %}
 <div class="row">
   <div class="col-sm-3 col-md-2 hidden-xs">
-    <form method="POST" action="/putonghua/new_chinese">
+    <form method="POST" action="/putonghua/search_chinese">
       <div class="form-group">
 	<label>New Chinese Phrase:
-	  <input name="new_phrase" id="id_new_phrase" 
+	  <input name="search_phrase" id="id_chinese_search_phrase" 
 		 class="form-control"
-		 placeholder="普通话"/>
+		 placeholder="普通话 / putonghua"/>
 	</label>
       </div>
       {% csrf_token %}
@@ -32,12 +32,12 @@
     {% endblock %}
   </div>
   <div class="col-xs-12 visible-xs-block">
-    <form method="POST" action="/putonghua/new_chinese">
+    <form method="POST" action="/putonghua/search_chinese">
       <div class="form-group">
 	<label>New Chinese Phrase:
-	  <input name="new_phrase" id="id_new_phrase" 
+	  <input name="search_phrase" id="id_search_chinese_phrase_2" 
 		 class="form-control"
-		 placeholder="普通话"/>
+		 placeholder="普通话 / putonghua"/>
 	</label>
       </div>
       {% csrf_token %}

@@ -20,6 +20,30 @@ class ChineseEnglishTranslation(object):
         self.english = english
         self.is_name = is_name
 
+    def simplified_and_pinyin(self):
+        return '{}{}'.format(self.simplified, self.pinyin)
+
+def do_compact_translations(trans_iter, definition_cnt=3):
+    curr_trans = None
+    for next_trans in trans_iter:
+        if curr_trans is None:
+            curr_trans = next_trans
+            defs = 1
+        elif next_trans.pinyin != curr_trans.pinyin:
+            yield curr_trans
+            curr_trans = next_trans
+            defs = 1
+        elif defs >= definition_cnt:
+            yield curr_trans
+            curr_trans = next_trans
+            defs = 1
+        else:
+            curr_trans.english = ' / '.join((curr_trans.english, next_trans.english))
+            defs += 1
+    if curr_trans is not None:
+        yield curr_trans
+
+
 
 class EnglishTranslationManager(models.Manager):
     def get_by_natural_key(self, eng_md5):
@@ -43,7 +67,16 @@ class EnglishTranslation(models.Model):
         return (self.eng_md5,)
 
 
+class CharacterManager(models.Manager):
+    def filter_tonelesspinyin_exact(self, pinyin):
+        re_str =  r'^\s*'
+        re_str += r'\d?\s*'.join(pinyin)
+        re_str += r'\d?$'
+        return self.filter(pinyin__regex=re_str)
+
 class Character(models.Model):
+    objects = CharacterManager();
+
     SIMPLIFIED  = 'S'
     TRADITIONAL = 'T'
     CHAR_TYPES  = ((SIMPLIFIED,  'Simplified'),
@@ -94,6 +127,10 @@ class Character(models.Model):
                                             english=connect.englishtranslation.english,
                                             is_name=connect.englishtranslation.is_name)
 
+    def compact_english_translations(self, definition_cnt=3):
+        yield from do_compact_translations(self.chinese_english_translations(),
+                                           definition_cnt=definition_cnt)
+
     def english_list(self):
         for translation in self.chinese_english_translations():
             yield translation.english
@@ -136,6 +173,12 @@ class ChinesePhraseManager(models.Manager):
     def get_by_natural_key(self, phrase_md5):
         return self.get(phrase_md5=phrase_md5)
 
+    def filter_tonelesspinyin_exact(self, pinyin):
+        re_str =  r'^\s*'
+        re_str += r'\d?\s*'.join(pinyin)
+        re_str += r'\d?$'
+        return self.filter(pinyin__regex=re_str)
+
 class ChinesePhrase(models.Model):
     objects = ChinesePhraseManager()
 
@@ -177,6 +220,10 @@ class ChinesePhrase(models.Model):
                                             pinyin=self.pinyin,
                                             english=connect.englishtranslation.english,
                                             is_name=connect.englishtranslation.is_name)
+
+    def compact_english_translations(self, definition_cnt=3):
+        yield from do_compact_translations(self.chinese_english_translations(),
+                                           definition_cnt=definition_cnt)
 
     def get_definition_rank(self, english):
         self.chinesephrasetoenglish_set.get(

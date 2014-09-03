@@ -13,6 +13,12 @@ class ModelsTest(TestCase):
         upload_cedict_file(join(TEST_RESOURCES, 'sample_set_2_cedict.txt'))
         upload_hsk_list_file(join(TEST_RESOURCES, 'hsk_example_file_1.txt'),1)
 
+    def test_can_look_up_characters(self):
+        word = Character.objects.get(char='在')
+        self.assertIn('at', list(word.english_list()))
+        word = Character.objects.get(char='是')
+        self.assertIn('is', list(word.english_list()))
+
     def test_hsk_definitions_ranked_before_cedict(self):
         word = ChinesePhrase.objects.get(simplified='星期')
         translations = list(word.chinese_english_translations())
@@ -40,3 +46,11 @@ class ModelsTest(TestCase):
         self.assertTrue(classifier_cnt > 0)
         word.add_classifier('个')
         self.assertEqual(classifier_cnt, len(word.classifiers))
+
+    def test_tonelesspinyin_lookup(self):
+        chars = Character.objects.filter_tonelesspinyin_exact('guo')
+        self.assertIn('国', [char.char for char in chars])
+        self.assertIn('果', [char.char for char in chars])
+
+        phrases = ChinesePhrase.objects.filter_tonelesspinyin_exact('xingqiliu')
+        self.assertIn('星期六', [phrase.simplified for phrase in phrases])

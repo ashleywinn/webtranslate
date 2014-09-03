@@ -1,3 +1,4 @@
+import re
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
@@ -6,6 +7,7 @@ from putonghua.models import ChineseEnglishTranslation, ChineseHskWord
 from putonghua.dictionary import find_definitions, add_chinese_phrase
 from putonghua.dictionary import add_english_definition, get_components_of_phrase
 from putonghua.dictionary import get_phrase_pinyin, update_phrase_pinyin
+from putonghua.dictionary import get_toneless_pinyin_components
 
 
 def find_first_definition(phrase):
@@ -22,7 +24,7 @@ def get_definitions(chin_str):
     yield from find_definitions(chin_str)
     if len(chin_str) > 1:
         for component in get_components_of_phrase(chin_str):
-            yield from find_up_to_n_definitions(4, component)
+            yield from find_up_to_n_definitions(2, component)
 
 def hsk_word_list_translations(list_number):
     return [hsk.compact_english_translation(definition_cnt=3)
@@ -31,6 +33,14 @@ def hsk_word_list_translations(list_number):
 
 def home_page(request):
     return render(request, 'home.html')
+
+def search_chinese(request):
+    search_text = request.POST.get('search_phrase', '').strip()
+    if search_text == '':
+        return redirect('/')
+    if re.match(r'[a-zA-Z]', search_text) is not None:
+        return redirect('/putonghua/pinyin/search/{}/'.format(search_text))
+    return redirect('/putonghua/{}/english/'.format(search_text))
 
 def new_chinese(request):
     new_phrase_text = request.POST.get('new_phrase', '').strip()
@@ -56,7 +66,7 @@ def new_pinyin(request, chinese_phrase):
     return redirect('/putonghua/{}/english/'.format(chinese_phrase))
 
 def view_english(request, chinese_phrase):
-    translation = find_first_definition(chinese_phrase)
+    translation = find_first_definition(str(chinese_phrase))
     if translation is None:
         translation = ChineseEnglishTranslation(
             simplified=chinese_phrase,
@@ -70,21 +80,40 @@ def view_english(request, chinese_phrase):
 
 def view_hsk_list(request, list_number):
     list_number = int(list_number)
-    hsk_definitions = list(hsk_word_list_translations(list_number))
     list_title = "HSK Word List {}".format(list_number)
 
+    available_list_nums = (1, 2, 3, 4, 5, 6)
     available_lists = []
-    for i in range(1,7):
+    for i in available_list_nums:
         if i == list_number: active = True
         else:                active = False
         available_lists.append({'number': i,
                                 'name': "List {}".format(i),
                                 'active': active})
 
+    hsk_definitions = [hsk.compact_english_translation(definition_cnt=3)
+                       for hsk in 
+                       ChineseHskWord.objects.filter(hsk_list=list_number)]
+
     return render(request, 'hsk_list.html',
                   {'list_title'     : list_title,
                    'available_lists': available_lists,
-                   'hsk_words'      : hsk_definitions})
+                   'definitions'      : hsk_definitions})
+
+def pinyin_search_result(request, pinyin):
+    pinyin_components = list(get_toneless_pinyin_components(pinyin))
+    definitions = []
+    for component in pinyin_components:
+        for phrase in ChinesePhrase.objects.filter_tonelesspinyin_exact(component):
+            for trans in phrase.compact_english_translations():
+                definitions.append(trans)
+        for character in Character.objects.filter_tonelesspinyin_exact(component):
+            for trans in character.compact_english_translations():
+                definitions.append(trans)
+    pinyin = ' '.join(pinyin_components)
+    return render(request, 'pinyin_search_result.html',
+                  {'search_pinyin'  : pinyin,
+                   'definitions'    : definitions})
 
 def view_stats(request):
     char_cnt = Character.objects.all().count()

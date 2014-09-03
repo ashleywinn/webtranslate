@@ -1,10 +1,10 @@
-{% extends 'table_view_base.html' %}
+{% extends 'definitions_table_base.html' %}
 
 {% block above_table_area %}
   <h3>{{ list_title }}</h3>
 {% endblock %}
 
-{% block table_area %}
+{% block table_header %}
   <ul class="nav nav-pills">
     {% for my_list in available_lists %}
       {% if my_list.active %}
@@ -14,14 +14,4 @@
       {% endif %}
     {% endfor %}
   </ul>
-  <p></p>
-  <table id="id_word_table" class="table table-condensed">
-    {% for hsk_word in hsk_words %}
-    <tr>
-      <td nowrap="nowrap"><a href="{% url 'view_english' hsk_word.simplified %}">{{ hsk_word.simplified }}</a></td>
-      <td nowrap="nowrap">{{ hsk_word.pinyin }}</td>
-      <td>{{ hsk_word.english }}</td>
-    </tr>
-    {% endfor %}
-  </table>
 {% endblock %}

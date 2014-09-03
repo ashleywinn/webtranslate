@@ -18,7 +18,7 @@ class HskWordListTest(FunctionalTest):
         table = self.browser.find_element_by_id('id_word_table')
         rows = table.find_elements_by_tag_name('td')
         self.assertIn('商店',         [row.text for row in rows])
-        self.assertIn('shop',         [row.text for row in rows])
+        self.assertIn('shop',         table.text)
         self.assertIn('shang1 dian4', [row.text for row in rows])
 
 

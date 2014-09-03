@@ -15,7 +15,7 @@ class NewVisitorTest(FunctionalTest):
         # There is a text box for entering a chinese phrase
         input_instruction = self.browser.find_element_by_tag_name('h3').text
         self.assertIn('Enter a sentence or phrase in Chinese', input_instruction)
-        input_box = self.browser.find_element_by_id('id_new_phrase')
+        input_box = self.browser.find_element_by_id('id_chinese_search_phrase')
         self.assertEqual(input_box.get_attribute('placeholder'), '普通话')
 
         # Steve enters a phrase he'd like to translate
@@ -29,14 +29,14 @@ class NewVisitorTest(FunctionalTest):
 
         # After the phrase is entered definitions are shown for the characters and words
         # and a new text box appears for the user to enter their translation
-        table = self.browser.find_element_by_id('id_definitions_table')
+        table = self.browser.find_element_by_id('id_word_table')
         rows = table.find_elements_by_tag_name('td')
         self.assertIn('说', [row.text for row in rows])
         self.assertIn('shuo1', [row.text for row in rows])
-        self.assertIn('to explain', [row.text for row in rows])
+        self.assertIn('to explain', table.text)
         self.assertIn('一', [row.text for row in rows])
         self.assertIn('yi1', [row.text for row in rows])
-        self.assertIn('one', [row.text for row in rows])
+        self.assertIn('one', table.text)
 
         # The input is then re-printed, Chinese above the English with 
         # check boxes next to each character and word
