@@ -5,6 +5,11 @@
   {% endblock %}
   <p></p>
   <table id="id_word_table" class="table table-condensed">
+    <colgroup>
+      <col class="definition-table-chinese-col" />
+      <col class="definition-table-pinyin-col" />
+      <col class="definition-table-english-col" />
+    </colgroup>
     {% regroup definitions by simplified as definition_groups %}
     {% for definition_group in definition_groups %}
        {% for definition in definition_group.list %}
