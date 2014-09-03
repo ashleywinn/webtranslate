@@ -10,24 +10,31 @@
       <col class="definition-table-pinyin-col" />
       <col class="definition-table-english-col" />
     </colgroup>
-    {% regroup definitions by simplified as definition_groups %}
-    {% for definition_group in definition_groups %}
-       {% for definition in definition_group.list %}
-       <tr>
-	 {% if forloop.first %}
-	 <td rowspan="{{ definition_group.list|length }}">
-	   <a href="{% url 'view_english' definition.simplified %}">
-	     {% if definition.is_name %}
-	     <u>{{ definition.simplified }}</u>
-	     {% else %}
-	     {{ definition.simplified }}
+    {% regroup definitions by simplified as simplified_groups %}
+    {% for simplified_group in simplified_groups %}
+       {% regroup simplified_group.list by pinyin as pinyin_groups %}
+       {% for pinyin_group in pinyin_groups %}
+          {% for definition in pinyin_group.list %}
+             <tr>
+	     {% if forloop.parentloop.first and forloop.first %}
+	       <td rowspan="{{ simplified_group.list|length }}">
+		 <a href="{% url 'view_english' definition.simplified %}">
+		 {% if definition.is_name %}
+		    <u>{{ definition.simplified }}</u>
+	         {% else %}
+	            {{ definition.simplified }}
+	         {% endif %}
+	         </a>
+	       </td>
 	     {% endif %}
-	   </a>
-	 </td>
-	 {% endif %}
-	 <td>{{ definition.pinyin }}</td>
-	 <td>{{ definition.english }}</td>
-       </tr>
+	     {% if forloop.first %}
+	       <td rowspan="{{ pinyin_group.list|length }}">
+		 {{ definition.pinyin }}
+	       </td>
+	     {% endif %}
+	     <td>{{ definition.english }}</td>
+             </tr>
+	  {% endfor %}
        {% endfor %}
     {% endfor %}
   </table>
