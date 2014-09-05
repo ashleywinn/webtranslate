@@ -15,6 +15,10 @@ class PinyinLookupTest(FunctionalTest):
         call_command("load_cedict_file", 
                      os.path.join(TEST_RESOURCES, 'sample_set_2_cedict.txt'))
 
+        call_command("load_subtlex_csv", 
+                     os.path.join(TEST_RESOURCES, 'subtlex_char_sample_set_1.csv'),
+                     data_type='char')
+
         self.browser.get(self.server_url)
 
         search_box = self.browser.find_element_by_id('id_chinese_search_phrase')
@@ -25,6 +29,22 @@ class PinyinLookupTest(FunctionalTest):
         rows = table.find_elements_by_tag_name('td')
         self.assertIn('他',   [row.text for row in rows])
         self.assertIn('她',   [row.text for row in rows])
+
+        search_box = self.browser.find_element_by_id('id_chinese_search_phrase')
+        search_box.send_keys('shi')
+        search_box.send_keys(Keys.ENTER)
+
+        self.browser.implicitly_wait(15)
+
+        shi_char_order = ['是','时','实','师','十','市']
+        table = self.browser.find_element_by_id('id_word_table')
+        rows = table.find_elements_by_tag_name('tr')
+        found_chars = []
+        for row in rows:
+            cells = row.find_elements_by_tag_name('td')
+            if len(cells) == 3:
+                found_chars.append(cells[0].text)
+        self.assertEqual(found_chars, shi_char_order)
 
         search_box = self.browser.find_element_by_id('id_chinese_search_phrase')
         search_box.send_keys('duibuqi')

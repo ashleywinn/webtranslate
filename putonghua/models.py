@@ -285,6 +285,7 @@ class ChineseWord(models.Model):
     character    = models.OneToOneField(Character, null=True)
     phrase       = models.OneToOneField(ChinesePhrase, null=True)
     classifiers  = models.CharField(max_length=8, blank=True)
+    freq_score   = models.PositiveSmallIntegerField(default=0)  # (0-999) log1p(x / 50000)
 
     def natural_key(self):
         return (self.character, self.phrase)
@@ -395,11 +396,11 @@ class ChineseName(models.Model):
 
 
 class SubtlexCharData(models.Model):
-    character  = models.OneToOneField(Character)
+    simplified = models.CharField(max_length=1)
     count      = models.PositiveIntegerField()
 
 class SubtlexWordData(models.Model):
-    phrase     = models.OneToOneField(ChinesePhrase)
+    simplified = models.CharField(max_length=16)
     count      = models.PositiveIntegerField()
 
 
