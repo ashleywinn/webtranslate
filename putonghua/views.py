@@ -4,9 +4,9 @@ from django.shortcuts import redirect
 from django.shortcuts import render
 from putonghua.models import Character, ChinesePhrase, ChineseWord, ChineseName
 from putonghua.models import ChineseEnglishTranslation, ChineseHskWord
-from putonghua.dictionary import find_definitions, add_chinese_phrase
+from putonghua.dictionary import find_definitions
 from putonghua.dictionary import add_english_definition, get_components_of_phrase
-from putonghua.dictionary import get_phrase_pinyin, update_phrase_pinyin
+from putonghua.dictionary import get_phrase_pinyin
 from putonghua.dictionary import get_toneless_pinyin_components
 
 
@@ -25,11 +25,6 @@ def get_definitions(chin_str):
     if len(chin_str) > 1:
         for component in get_components_of_phrase(chin_str):
             yield from find_up_to_n_definitions(2, component)
-
-def hsk_word_list_translations(list_number):
-    return [hsk.compact_english_translation(definition_cnt=3)
-            for hsk in ChineseHskWord.objects.filter(hsk_list=list_number)]
-
 
 def home_page(request):
     return render(request, 'home.html')
@@ -50,19 +45,18 @@ def new_chinese(request):
 
 def new_translation(request, chinese_phrase):
     english_text = request.POST.get('english', '').strip()
-    if english_text != '':
-        phrase = add_chinese_phrase(chinese_phrase)
-        add_english_definition(phrase, english_text)
-        if not phrase.pinyin:
-            phrase.pinyin = get_phrase_pinyin(chinese_phrase)
-            phrase.save()
-    return redirect('/putonghua/{}/english/'.format(chinese_phrase))
+    pinyin_text  = request.POST.get('pinyin',  '').strip()
+    if english_text == '' and pinyin_text == '':
+        return redirect('/putonghua/{}/english/'.format(chinese_phrase))
 
-def new_pinyin(request, chinese_phrase):
-    pinyin_text = request.POST.get('pinyin', '').strip()
-    if pinyin_text != '':
-        phrase = add_chinese_phrase(chinese_phrase)
-        update_phrase_pinyin(phrase, pinyin_text)
+    phrase, created = ChinesePhrase.objects.get_or_create(
+                                 simplified=chinese_phrase,
+                                 defaults={'pinyin': get_phrase_pinyin(chinese_phrase)})
+    if english_text != '':
+        add_english_definition(phrase, english_text)
+    elif pinyin_text != '':
+        phrase.pinyin = pinyin_text
+    phrase.save()
     return redirect('/putonghua/{}/english/'.format(chinese_phrase))
 
 def view_english(request, chinese_phrase):
@@ -104,11 +98,13 @@ def pinyin_search_result(request, pinyin):
     pinyin_components = list(get_toneless_pinyin_components(pinyin))
     definitions = []
     for component in pinyin_components:
-        for phrase in ChinesePhrase.objects.filter_tonelesspinyin_exact(component):
-            for trans in phrase.compact_english_translations():
+        for phrase in ChinesePhrase.objects.filter_tonelesspinyin_exact(
+                        component).order_by('-freq_score'):
+            for trans in phrase.compact_english_translations(definition_cnt=3):
                 definitions.append(trans)
-        for character in Character.objects.filter_tonelesspinyin_exact(component):
-            for trans in character.compact_english_translations():
+        for character in Character.objects.filter_tonelesspinyin_exact(
+                        component).order_by('-freq_score'):
+            for trans in character.compact_english_translations(definition_cnt=3):
                 definitions.append(trans)
     pinyin = ' '.join(pinyin_components)
     return render(request, 'pinyin_search_result.html',

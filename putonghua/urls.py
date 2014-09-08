@@ -10,7 +10,5 @@ urlpatterns = patterns('',
     url(r'hsk_list/(\d+)/$',     'putonghua.views.view_hsk_list',    name='view_hsk_list'),
     url(r'(.+)/new_translation$', 
                             'putonghua.views.new_translation', name='new_translation'),
-    url(r'(.+)/new_pinyin$', 
-                            'putonghua.views.new_pinyin',      name='new_pinyin'),
     url(r'stats$',          'putonghua.views.view_stats',      name='view_stats'),
 )

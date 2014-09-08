@@ -23,7 +23,8 @@ class ChineseEnglishTranslation(object):
     def simplified_and_pinyin(self):
         return '{}{}'.format(self.simplified, self.pinyin)
 
-def do_compact_translations(trans_iter, definition_cnt=3):
+def do_compact_translations(trans_iter, definition_cnt=3,
+                            definition_length=60):
     curr_trans = None
     for next_trans in trans_iter:
         if curr_trans is None:
@@ -34,6 +35,11 @@ def do_compact_translations(trans_iter, definition_cnt=3):
             curr_trans = next_trans
             defs = 1
         elif defs >= definition_cnt:
+            yield curr_trans
+            curr_trans = next_trans
+            defs = 1
+        elif (len(curr_trans.english) + 
+              len(next_trans.english) + 3) > definition_length:
             yield curr_trans
             curr_trans = next_trans
             defs = 1

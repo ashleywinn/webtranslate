@@ -3,7 +3,8 @@ from django.utils.encoding import iri_to_uri
 from putonghua.dictionary import upload_hsk_list_file
 from putonghua.cedict import upload_cedict_file
 from putonghua.models import Character, ChinesePhrase
-from putonghua.dictionary import get_phrase_pinyin, get_toneless_pinyin_components
+from putonghua.dictionary import get_phrase_pinyin, get_components_of_phrase
+from putonghua.dictionary import get_toneless_pinyin_components
 from .base import test_resource_file
 
 class DictionaryModelTest(TestCase):
@@ -31,13 +32,21 @@ class DictionaryModelTest(TestCase):
 
         toneless_words = 'hanzheng fu shanghai niu dadiao yan xiwang peiyang geng duo ju guoji shiye chuangxin xing rencai'
         toneless_words = toneless_words.split()
-        tonelesspinyin = "hanzhengfushanghainiudadiaoyanxiwangpeiyanggengduojuguojishiyechuangxinxingrencai"
+        tonelesspinyin = ''.join(toneless_words)
 
-        for i, chunk in enumerate(get_toneless_pinyin_components(tonelesspinyin)):
-            self.assertEqual(toneless_words[i], chunk)
-
+        self.assertEqual(toneless_words, list(get_toneless_pinyin_components(tonelesspinyin)))
         self.assertEqual('cai', list(get_toneless_pinyin_components('cai'))[0])
         self.assertEqual('laoshi', list(get_toneless_pinyin_components('laoshi'))[0])
+
+    
+    def test_get_phrase_components(self):
+        phrase_components = ['韩正','赴','上海','纽','大调',
+                             '研','希望','培养','更','多','具',
+                             '国际','视野','创新','型','人才']
+        phrase_chars = ''.join(phrase_components)
+        self.assertEqual(phrase_components, list(get_components_of_phrase(phrase_chars)))
+
+        
     
 
 #    def test_can_look_up_definitons(self):

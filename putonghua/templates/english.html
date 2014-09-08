@@ -3,7 +3,7 @@
 {% block above_table_area %}
   <h3>{{ phrase_translation.simplified }}</h3>
   <h3>{{ phrase_translation.pinyin }}</h3>
-  <form method="POST" action="/putonghua/{{ phrase_translation.simplified }}/new_pinyin">
+  <form method="POST" action="/putonghua/{{ phrase_translation.simplified }}/new_translation">
     <input name="pinyin" id="id_new_pinyin" class="form-control"
 	   placeholder="Your updated pinyin here" />
     {% csrf_token %}

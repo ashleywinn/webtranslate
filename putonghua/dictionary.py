@@ -14,9 +14,6 @@ from putonghua.CsvUtil import csv_dict_iter
 
 class ParseError(Exception): pass
 
-def calc_frequency_score(cnt, tot_cnt, scale=50000):
-    return int(100 * math.log1p(float(cnt) / (float(tot_cnt) / float(scale))))
-    
 
 def serialize_character_dictionary(outfile):
     JSONSerializer = serializers.get_serializer("json")
@@ -117,66 +114,6 @@ def add_chinese_word(simplified, pinyin, definitions=[], ranks=[]):
     return word
 
 
-def upload_subtlex_char_data(infile):
-    for record in csv_dict_iter(infile, headings_row=2):
-        char = record['Character']
-        word_count = int(record['CHRCount'])
-        try:
-            # Do update here?
-            SubtlexCharData.objects.get(character__char=char)
-            continue
-        except SubtlexCharData.DoesNotExist:
-            pass
-        try:
-            character = Character.objects.get(char=char)
-            SubtlexCharData.objects.create(character=character,
-                                           count=word_count)
-        except Character.DoesNotExist:
-            character = Character.objects.create(char=char,
-                                                 char_type=Character.SIMPLIFIED,
-                                                 pinyin='(unknown)')
-            SubtlexCharData.objects.create(character=character,
-                                           count=word_count)
-
-def upload_subtlex_word_data(infile):
-    unrecognized_cnt = 0
-    for record in csv_dict_iter(infile, headings_row=2):
-        word = record['Word']
-        word_count = int(record['WCount'])
-        if len(word) < 2:
-            continue
-        try:
-            # Do update here?
-            SubtlexWordData.objects.get(phrase__simplified=word)
-            continue
-        except SubtlexWordData.DoesNotExist:
-            pass
-        try:
-            phrase = ChinesePhrase.objects.get(simplified=word)
-            SubtlexWordData.objects.create(phrase=phrase,
-                                           count=word_count)
-        except ChinesePhrase.DoesNotExist:
-            if word_count > 10:
-                unrecognized_cnt += 1
-                print("%d. unrecognized: %s  cnt: %d" % (unrecognized_cnt, 
-                                                         word, word_count))
-                phrase = ChinesePhrase.objects.create(simplified=word,
-                                                      pinyin='(unknown)')
-                SubtlexWordData.objects.create(phrase=phrase,
-                                               count=word_count)
-
-def update_char_freq_scores():
-    data_set_size = SubtlexCharData.objects.all().aggregate(total=Sum('count'))['total']
-    for subtlex_char in SubtlexCharData.objects.all():
-        subtlex_char.character.freq_score = calc_frequency_score(subtlex_char.count, data_set_size)
-        subtlex_char.character.save()
-
-def update_word_freq_scores():
-    data_set_size = SubtlexWordData.objects.all().aggregate(total=Sum('count'))['total']
-    for subtlex_word in SubtlexWordData.objects.all():
-        subtlex_word.phrase.freq_score = calc_frequency_score(subtlex_word.count, data_set_size)
-        subtlex_word.phrase.save()
-
 
 def update_char_pinyin_from_hsk():
     for char in Character.objects.filter(chinesehskword__isnull=False):
@@ -187,15 +124,10 @@ def update_char_pinyin_from_hsk():
                 print("%s : %s -> %s" % (char.char, char.pinyin, hsk_pinyin))
 
 
-def get_toneless_pinyin_components(pinyin):
-    for pinyin_word in pinyin.split():
-        yield from get_recognized_components(pinyin_word, is_recognized_toneless_pinyin, 
-                                             max_len=25)
-
 def get_recognized_components(text, recognizer, max_len=100):
     while len(text) > 1:
         for i in range(len(text), 0, -1):
-            if i >= max_len: pass
+            if i >= max_len: continue
             if i == 1:
                 yield text[0]
                 text = text[1:]
@@ -208,6 +140,11 @@ def get_recognized_components(text, recognizer, max_len=100):
         yield text
 
 
+def get_toneless_pinyin_components(pinyin):
+    for pinyin_word in pinyin.split():
+        yield from get_recognized_components(pinyin_word, is_recognized_toneless_pinyin, 
+                                             max_len=25)
+
 def is_recognized_toneless_pinyin(pinyin):
     if ChinesePhrase.objects.filter_tonelesspinyin_exact(pinyin).exists():
         return True
@@ -215,6 +152,10 @@ def is_recognized_toneless_pinyin(pinyin):
         return True
     return False
 
+
+# def get_components_of_phrase(simplified, max_len=100):
+#    yield from get_recognized_components(simplified, is_recognized_phrase,
+#                                         max_len=max_len)
 
 def get_components_of_phrase(simplified):
     max_len = len(simplified)
@@ -233,6 +174,14 @@ def get_components_of_phrase(simplified):
                 break
     if len(simplified):
         yield simplified
+
+
+def is_recognized_phrase(simplified):
+    if ChinesePhrase.objects.filter(simplified=simplified).exists():
+        return True
+    else:
+        return False
+
 
 def get_character_pinyin(simplified):
     # for now this is just the first pinyin found for a character
@@ -253,44 +202,15 @@ def get_phrase_pinyin(simplified):
         pinyin = '{} {}'.format(pinyin, get_character_pinyin(char))
     return pinyin.strip()
 
-def is_recognized_phrase(simplified):
-    if len(get_chinese_phrases(simplified)) > 0:
-        return True
-    else:
-        return False
-
 def find_definitions(simplified):
     length = len(simplified)
     if length == 1:
-        matches = Character.objects.filter(char=simplified)
+        matches = Character.objects.filter(char=simplified).order_by('-freq_score')
     else:
-        matches = ChinesePhrase.objects.filter(simplified=simplified)
+        matches = ChinesePhrase.objects.filter(simplified=simplified).order_by('-freq_score')
     for match in matches:
-        yield from match.compact_english_translations()
+        yield from match.compact_english_translations(definition_cnt=3)
 
-
-def get_chinese_phrases(simplified):
-    if (len(simplified) > 1):
-        return ChinesePhrase.objects.filter(length=len(simplified), 
-                                            simplified=simplified)
-    else:
-        return Character.objects.filter(char=simplified)
-        
-
-def add_chinese_phrase(simplified, pinyin=''):
-    length = len(simplified)
-    try: 
-        return ChinesePhrase.objects.get(length=length, simplified=simplified)
-    except ChinesePhrase.DoesNotExist:
-        phrase = ChinesePhrase(length=length, 
-                               simplified=simplified,
-                               pinyin=pinyin)
-        phrase.save()
-        return phrase
-
-def update_phrase_pinyin(phrase, pinyin):
-    phrase.pinyin = pinyin
-    phrase.save()
 
 def add_english_definition(phrase, english, rank=0):
     try:
@@ -310,11 +230,6 @@ def add_english_definition(phrase, english, rank=0):
                                          rank=rank)
         connect.save()
 
-
-def add_phrase_definition(simplified, pinyin, english_list):
-    phrase = add_chinese_phrase(simplified, pinyin)
-    for definition in english_list:
-        add_english_definition(phrase, definition)
 
     
     
