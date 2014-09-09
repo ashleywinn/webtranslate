@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
-{% block header_text %}Translation Builder{% endblock %}
+{% block header_text %}Reading 普通话{% endblock %}
 {% block main_container %}
 <div class="row">
   <div class="col-sm-3 col-md-2 hidden-xs">
-    <form method="POST" action="/putonghua/search_chinese">
+    <form method="POST" action="{% url 'search_chinese' %}">
       <div class="form-group">
 	<label>New Chinese Phrase:
 	  <input name="search_phrase" id="id_chinese_search_phrase" 
@@ -32,7 +32,7 @@
     {% endblock %}
   </div>
   <div class="col-xs-12 visible-xs-block">
-    <form method="POST" action="/putonghua/search_chinese">
+    <form method="POST" action="{% url 'search_chinese' %}">
       <div class="form-group">
 	<label>New Chinese Phrase:
 	  <input name="search_phrase" id="id_search_chinese_phrase_2" 

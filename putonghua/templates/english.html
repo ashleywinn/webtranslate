@@ -3,7 +3,7 @@
 {% block above_table_area %}
   <h3>{{ phrase_translation.simplified }}</h3>
   <h3>{{ phrase_translation.pinyin }}</h3>
-  <form method="POST" action="/putonghua/{{ phrase_translation.simplified }}/new_translation">
+  <form method="POST" action="{% url 'new_translation' phrase_translation.simplified %}">
     <input name="pinyin" id="id_new_pinyin" class="form-control"
 	   placeholder="Your updated pinyin here" />
     {% csrf_token %}
@@ -13,7 +13,7 @@
   {% else %}
   <h3><i>no translation found</i></h3>
   {% endif %}
-  <form method="POST" action="/putonghua/{{ phrase_translation.simplified }}/new_translation">
+  <form method="POST" action="{% url 'new_translation' phrase_translation.simplified %}">
     <input name="english" id="id_new_english" class="form-control"
 	   placeholder="Your English translation here" />
     {% csrf_token %}

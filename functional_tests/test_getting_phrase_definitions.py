@@ -1,5 +1,6 @@
 from .base import FunctionalTest
 from django.utils.encoding import iri_to_uri
+from django.core.urlresolvers import reverse
 from selenium.webdriver.common.keys import Keys
 
 class NewVisitorTest(FunctionalTest):
@@ -9,14 +10,14 @@ class NewVisitorTest(FunctionalTest):
         # Steve goes to check out a new translation website
         self.browser.get(self.server_url)
 
-        # Its called Translation Builder
-        assert 'Translation Builder' in self.browser.title
+        # now Its called Reading Putonghua
+        assert 'Reading Putonghua' in self.browser.title
 
         # There is a text box for entering a chinese phrase
         input_instruction = self.browser.find_element_by_tag_name('h3').text
         self.assertIn('Enter a sentence or phrase in Chinese', input_instruction)
         input_box = self.browser.find_element_by_id('id_chinese_search_phrase')
-        self.assertEqual(input_box.get_attribute('placeholder'), '普通话')
+        # self.assertEqual(input_box.get_attribute('placeholder'), '普通话')
 
         # Steve enters a phrase he'd like to translate
         chinese_phrase = '我会说一点中文'  # '我会说一点普通话'
@@ -25,7 +26,7 @@ class NewVisitorTest(FunctionalTest):
 
         # After he hits Enter, he is taken to a new URL for his phrase/sentence
         phrase_url = self.browser.current_url
-        self.assertRegex(phrase_url, iri_to_uri('/putonghua/{}/english/'.format(chinese_phrase)))
+        self.assertRegex(phrase_url, reverse('view_english', args=(chinese_phrase,)))
 
         # After the phrase is entered definitions are shown for the characters and words
         # and a new text box appears for the user to enter their translation

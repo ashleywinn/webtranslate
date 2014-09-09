@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
-{% block header_text %}Translation Builder{% endblock %}
+{% block header_text %}Reading 普通话{% endblock %}
 {% block main_container %}
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <div class="text-center">
       <h3>Enter a sentence or phrase in Chinese</h3>
 
-      <form method="POST" action="/putonghua/search_chinese">
+      <form method="POST" action="{% url 'search_chinese' %}">
 	<label>New Chinese Phrase:
 	  <input name="search_phrase" id="id_chinese_search_phrase" 
-		 placeholder="普通话" size="50" />
+		 placeholder="普通话 / putonghua" size="50" />
 	</label>
 	{% csrf_token %}
       </form>

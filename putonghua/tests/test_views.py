@@ -1,4 +1,4 @@
-from django.core.urlresolvers import resolve
+from django.core.urlresolvers import resolve, reverse
 from django.test import TestCase
 from django.http import HttpRequest
 from django.template.loader import render_to_string
@@ -22,17 +22,14 @@ class ViewsTest(TestCase):
         self.assertEqual(response.content.decode(), expected_html)
         
     def test_redirects_after_POST(self):
-        response = self.client.post('/putonghua/new_chinese',
-                                    data={'new_phrase': '你好'}
-                                    )
-        self.assertRedirects(response, iri_to_uri('/putonghua/你好/english/'))
+        response = self.client.post(reverse('search_chinese'),
+                                    data={'search_phrase': '你好'})
+        self.assertRedirects(response, 
+                             reverse('view_english', args=['你好']))
 
 
     def test_english_view_displays_components(self):
-        # response = self.client.get('/putonghua/第二项/english/')
-        # self.assertContains(response, 'two')
-
-        response = self.client.get('/putonghua/这个可以好/english/')
+        response = self.client.get(reverse('view_english', args=['这个可以好']))
         self.assertContains(response, 'this')
         self.assertContains(response, 'possible')
         self.assertContains(response, 'good')
@@ -43,16 +40,16 @@ class ViewsTest(TestCase):
         upload_hsk_list_file(test_resource_file('hsk_example_file_2.txt'),2)
 
         lookup = 'ba'
-        response = self.client.get('/putonghua/pinyin/search/{}/'.format(lookup))
+        response = self.client.get(reverse('pinyin_search_result', args=(lookup,)))
         self.assertContains(response, '八')
         self.assertContains(response, '把')
 
         lookup = 'zhaoxiangji'
-        response = self.client.get('/putonghua/pinyin/search/{}/'.format(lookup))
+        response = self.client.get(reverse('pinyin_search_result', args=(lookup,)))
         self.assertContains(response, 'camera')
 
         lookup = 'bataizhaoxiangji'
-        response = self.client.get('/putonghua/pinyin/search/{}/'.format(lookup))
+        response = self.client.get(reverse('pinyin_search_result', args=(lookup,)))
         self.assertContains(response, 'camera')
         self.assertContains(response, 'eight')
     

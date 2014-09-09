@@ -68,10 +68,15 @@ def _comment_databases_setting(settings_file):
 def _update_settings(source_folder, site_name):
   settings_path = source_folder + '/webtranslate/settings.py'
   sed(settings_path, "DEBUG = True", "DEBUG = False")
+  
+  allowed_host = site_name
+  # hack to allow www.example.com a domain to also match example.com
+  if allowed_host.startswith('www'):
+    allowed_host = allowed_host[2:]
   sed(settings_path,
-    'ALLOWED_HOSTS =.+$',
-    'ALLOWED_HOSTS = ["%s"]' % (site_name,)
-    )
+      'ALLOWED_HOSTS =.+$',
+      'ALLOWED_HOSTS = ["%s"]' % (allowed_host,)
+      )
   comment(settings_path, "SECRET_KEY =")
   _comment_databases_setting(settings_path)
   secrets_file = source_folder + '/webtranslate/secrets.py'
