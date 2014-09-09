@@ -72,7 +72,7 @@ def _update_settings(source_folder, site_name):
   allowed_host = site_name
   # hack to allow www.example.com a domain to also match example.com
   if allowed_host.startswith('www'):
-    allowed_host = allowed_host[2:]
+    allowed_host = allowed_host[3:]  # remove the 'www' so its just '.example.com'
   sed(settings_path,
       'ALLOWED_HOSTS =.+$',
       'ALLOWED_HOSTS = ["%s"]' % (allowed_host,)
