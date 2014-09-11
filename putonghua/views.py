@@ -1,5 +1,6 @@
 import re
 from django.http import HttpResponse
+from django.core.urlresolvers import reverse
 from django.shortcuts import redirect
 from django.shortcuts import render
 from putonghua.models import Character, ChinesePhrase, ChineseWord, ChineseName
@@ -34,20 +35,14 @@ def search_chinese(request):
     if search_text == '':
         return redirect('/')
     if re.match(r'[a-zA-Z]', search_text) is not None:
-        return redirect('/putonghua/pinyin/search/{}/'.format(search_text))
-    return redirect('/putonghua/{}/english/'.format(search_text))
-
-def new_chinese(request):
-    new_phrase_text = request.POST.get('new_phrase', '').strip()
-    if new_phrase_text == '':
-        return redirect('/')
-    return redirect('/putonghua/{}/english/'.format(new_phrase_text))
+        return redirect(reverse('pinyin_search_result', args=[search_text]))
+    return redirect(reverse('view_english', args=[search_text]))
 
 def new_translation(request, chinese_phrase):
     english_text = request.POST.get('english', '').strip()
     pinyin_text  = request.POST.get('pinyin',  '').strip()
     if english_text == '' and pinyin_text == '':
-        return redirect('/putonghua/{}/english/'.format(chinese_phrase))
+        return redirect(reverse('view_english', args=[chinese_phrase]))
 
     phrase, created = ChinesePhrase.objects.get_or_create(
                                  simplified=chinese_phrase,
@@ -57,7 +52,7 @@ def new_translation(request, chinese_phrase):
     elif pinyin_text != '':
         phrase.pinyin = pinyin_text
     phrase.save()
-    return redirect('/putonghua/{}/english/'.format(chinese_phrase))
+    return redirect(reverse('view_english', args=[chinese_phrase]))
 
 def view_english(request, chinese_phrase):
     translation = find_first_definition(str(chinese_phrase))

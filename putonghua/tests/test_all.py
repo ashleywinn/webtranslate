@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.utils.encoding import iri_to_uri
 from putonghua.models import Character, ChinesePhrase
@@ -18,7 +19,7 @@ from putonghua.dictionary import get_phrase_pinyin
 class NewTranslationTest(TestCase):
 
     def post_new_translation(self, chinese, english):
-        return self.client.post('/putonghua/{}/new_translation'.format(chinese),
+        return self.client.post(reverse('new_translation', args=[chinese]),
                                 data={'english': english}
                                 )
     
@@ -31,7 +32,7 @@ class NewTranslationTest(TestCase):
 
     def test_redirects_after_POST(self):
         response = self.post_new_translation('你好', 'hi')
-        self.assertRedirects(response, iri_to_uri('/putonghua/你好/english/'))
+        self.assertRedirects(response, reverse('view_english', args=['你好']))
 
 
 class DictionaryModelTest(TestCase):
@@ -60,16 +61,6 @@ class DictionaryModelTest(TestCase):
         word = Character.objects.get(char='是')
         self.assertIn('is', [translation.english 
                                for translation in word.translations.all()])
-
-    # moved this here to avoid loading the fixture twice
-    def test_english_view_displays_components(self):
-        # response = self.client.get('/putonghua/第二项/english/')
-        # self.assertContains(response, 'two')
-
-        response = self.client.get('/putonghua/这个可以好/english/')
-        self.assertContains(response, 'this')
-        self.assertContains(response, 'possible')
-        self.assertContains(response, 'good')
 
     
 #    def test_can_look_up_definitons(self):
