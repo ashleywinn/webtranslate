@@ -6,11 +6,12 @@
 }
 
 .rd-putong-english-form {
-  padding-left: 15px;
-  padding-right: 15px;
-  background: #f4f4f4;
-  border: 1px solid #dadada;
-  border-radius: 4px;
+    padding-left: 15px;
+   padding-right: 15px;
+  padding-bottom: 10px;
+      background: #f4f4f4;
+          border: 1px solid #dadada;
+   border-radius: 4px;
 }
 
 .rd-putong-header h1 a {

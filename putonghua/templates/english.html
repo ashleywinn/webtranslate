@@ -25,20 +25,20 @@
     {% else %}
     <div class="form-group">
     {% endif %}
-      <label for="{{ form.pinyin.id_for_label }}">Update pinyin</label>
+      <label for="{{ form.pinyin.id_for_label }}">Update pinyin:</label>
       {{ form.pinyin }}
     </div>
     <div class="form-group">
       <ul class="bg-danger">{{ form.english.errors }}</ul>
-      <label for="{{ form.english.id_for_label }}">Add new translation</label>
+      <label for="{{ form.english.id_for_label }}">Add new translation:</label>
       {{ form.english }}
       <div class="checkbox">
-        <label>
+        <label class="col-xs-9 col-sm-10">
           {{ form.is_name }}{{ form.is_name.label }}
         </label>
+        <button type="submit" class="col-xs-3 col-sm-2 btn btn-primary">Submit</button>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
     {% csrf_token %}
   </form>
 </div>
