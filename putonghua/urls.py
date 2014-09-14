@@ -7,7 +7,5 @@ urlpatterns = patterns('',
     url(r'pinyin/search/(.+)/$', 'putonghua.views.pinyin_search_result', name='pinyin_search_result'),
     url(r'(.+)/english/$',       'putonghua.views.view_english',     name='view_english'),
     url(r'hsk_list/(\d+)/$',     'putonghua.views.view_hsk_list',    name='view_hsk_list'),
-    url(r'(.+)/new_translation$', 
-                            'putonghua.views.new_translation', name='new_translation'),
     url(r'stats$',          'putonghua.views.view_stats',      name='view_stats'),
 )

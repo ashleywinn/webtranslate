@@ -1,10 +1,10 @@
 import re
 from django.http import HttpResponse
-from django.core.urlresolvers import reverse
 from django.shortcuts import redirect
 from django.shortcuts import render
 from putonghua.models import Character, ChinesePhrase, ChineseWord, ChineseName
 from putonghua.models import ChineseEnglishTranslation, ChineseHskWord
+from putonghua.forms  import ChinesePhraseForm
 from putonghua.dictionary import find_definitions
 from putonghua.dictionary import add_english_definition, get_components_of_phrase
 from putonghua.dictionary import get_phrase_pinyin
@@ -35,24 +35,8 @@ def search_chinese(request):
     if search_text == '':
         return redirect('/')
     if re.match(r'[a-zA-Z]', search_text) is not None:
-        return redirect(reverse('pinyin_search_result', args=[search_text]))
-    return redirect(reverse('view_english', args=[search_text]))
-
-def new_translation(request, chinese_phrase):
-    english_text = request.POST.get('english', '').strip()
-    pinyin_text  = request.POST.get('pinyin',  '').strip()
-    if english_text == '' and pinyin_text == '':
-        return redirect(reverse('view_english', args=[chinese_phrase]))
-
-    phrase, created = ChinesePhrase.objects.get_or_create(
-                                 simplified=chinese_phrase,
-                                 defaults={'pinyin': get_phrase_pinyin(chinese_phrase)})
-    if english_text != '':
-        add_english_definition(phrase, english_text)
-    elif pinyin_text != '':
-        phrase.pinyin = pinyin_text
-    phrase.save()
-    return redirect(reverse('view_english', args=[chinese_phrase]))
+        return redirect('pinyin_search_result', search_text)
+    return redirect('view_english', search_text)
 
 def view_english(request, chinese_phrase):
     translation = find_first_definition(str(chinese_phrase))
@@ -63,8 +47,22 @@ def view_english(request, chinese_phrase):
             english=''
             )
     definitions = list(get_definitions(chinese_phrase))
+
+    form = ChinesePhraseForm(initial={'pinyin': translation.pinyin})
+    if request.method == 'POST':
+        form = ChinesePhraseForm(data=request.POST)
+        if form.is_valid():
+            phrase, created = ChinesePhrase.objects.get_or_create(
+                simplified=chinese_phrase)
+            if form.cleaned_data['english'] != '':
+                add_english_definition(phrase, form.cleaned_data['english'])
+            phrase.pinyin = form.cleaned_data['pinyin']
+            phrase.save()
+            return redirect('view_english', chinese_phrase)
+            
     return render(request, 'english.html',
-                  {'phrase_translation'  : translation,
+                  {'form'                : form,
+                   'phrase_translation'  : translation,
                    'definitions'         : definitions})
 
 def view_hsk_list(request, list_number):

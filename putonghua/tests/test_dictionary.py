@@ -1,5 +1,4 @@
 from django.test import TestCase
-from django.utils.encoding import iri_to_uri
 from putonghua.dictionary import upload_hsk_list_file
 from putonghua.cedict import upload_cedict_file
 from putonghua.models import Character, ChinesePhrase

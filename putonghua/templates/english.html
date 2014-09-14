@@ -1,21 +1,45 @@
 {% extends 'definitions_table_base.html' %}
 
 {% block above_table_area %}
+<div class="highlight">
   <h3>{{ phrase_translation.simplified }}</h3>
   <h3>{{ phrase_translation.pinyin }}</h3>
-  <form method="POST" action="{% url 'new_translation' phrase_translation.simplified %}">
-    <input name="pinyin" id="id_new_pinyin" class="form-control"
-	   placeholder="Your updated pinyin here" />
-    {% csrf_token %}
-  </form>
   {% if phrase_translation.english %}
   <h3>{{ phrase_translation.english }}</h3>
   {% else %}
   <h3><i>no translation found</i></h3>
   {% endif %}
-  <form method="POST" action="{% url 'new_translation' phrase_translation.simplified %}">
-    <input name="english" id="id_new_english" class="form-control"
-	   placeholder="Your English translation here" />
+</div>
+<div class="rd-putong-english-form">
+  <form role="form"
+      method="POST" 
+      action="{% url 'view_english' phrase_translation.simplified %}">
+    <ul class="bg-danger">{{ form.non_field_errors }}</ul>
+    {% if form.pinyin.errors %}
+    <div class="form-group has-error">
+      <ul class="bg-danger">
+      {% for error in form.pinyin.errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+      </ul>
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+      <label for="{{ form.pinyin.id_for_label }}">Update pinyin</label>
+      {{ form.pinyin }}
+    </div>
+    <div class="form-group">
+      <ul class="bg-danger">{{ form.english.errors }}</ul>
+      <label for="{{ form.english.id_for_label }}">Add new translation</label>
+      {{ form.english }}
+      <div class="checkbox">
+        <label>
+          {{ form.is_name }}{{ form.is_name.label }}
+        </label>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
     {% csrf_token %}
   </form>
+</div>
 {% endblock %}

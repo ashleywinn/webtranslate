@@ -62,8 +62,13 @@ class EnglishTranslation(models.Model):
     objects = EnglishTranslationManager();
 
     english = models.TextField()
-    eng_md5 = models.CharField(max_length=32, unique=True)
+    eng_md5 = models.CharField(max_length=32, unique=True,
+                               blank=True) # needed because its 
+                                           # set after validation
     is_name = models.BooleanField(default=False)
+
+    def clean(self):
+        self.eng_md5 = hashtext(self.english)
 
     def save(self, *args, **kwargs):
         self.eng_md5 = hashtext(self.english)

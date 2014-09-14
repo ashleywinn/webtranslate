@@ -1,6 +1,8 @@
 from os.path import join
 from .base import TEST_RESOURCES
 from django.test import TestCase
+from django.core.exceptions import ValidationError
+from putonghua.models import EnglishTranslation
 from putonghua.models import Character, ChinesePhrase
 from putonghua.models import ChineseWord, ChineseHskWord
 from putonghua.dictionary import upload_hsk_list_file
@@ -12,6 +14,14 @@ class ModelsTest(TestCase):
     def setUp(self):
         upload_cedict_file(join(TEST_RESOURCES, 'sample_set_2_cedict.txt'))
         upload_hsk_list_file(join(TEST_RESOURCES, 'hsk_example_file_1.txt'),1)
+
+
+    def test_duplicate_definitions_are_invalid(self):
+        EnglishTranslation.objects.get_or_create(english='blah')
+        with self.assertRaises(ValidationError):
+            eng = EnglishTranslation(english='blah')
+            eng.full_clean()
+
 
     def test_can_look_up_characters(self):
         word = Character.objects.get(char='在')
