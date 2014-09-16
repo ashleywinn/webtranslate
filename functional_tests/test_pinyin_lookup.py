@@ -19,20 +19,14 @@ class PinyinLookupTest(FunctionalTest):
                      os.path.join(TEST_RESOURCES, 'subtlex_char_sample_set_1.csv'),
                      data_type='char')
 
-        self.browser.get(self.server_url)
-
-        search_box = self.browser.find_element_by_id('id_chinese_search_phrase')
-        search_box.send_keys('ta')
-        search_box.send_keys(Keys.ENTER)
+        self.search_for_chinese_phrase('ta')
 
         table = self.browser.find_element_by_id('id_word_table')
         rows = table.find_elements_by_tag_name('td')
         self.assertIn('他',   [row.text for row in rows])
         self.assertIn('她',   [row.text for row in rows])
 
-        search_box = self.browser.find_element_by_id('id_chinese_search_phrase')
-        search_box.send_keys('shi')
-        search_box.send_keys(Keys.ENTER)
+        self.search_for_chinese_phrase('shi')
 
         self.browser.implicitly_wait(15)
 
@@ -46,9 +40,7 @@ class PinyinLookupTest(FunctionalTest):
                 found_chars.append(cells[0].text)
         self.assertEqual(found_chars, shi_char_order)
 
-        search_box = self.browser.find_element_by_id('id_chinese_search_phrase')
-        search_box.send_keys('duibuqi')
-        search_box.send_keys(Keys.ENTER)
+        self.search_for_chinese_phrase('duibuqi')
 
         table = self.browser.find_element_by_id('id_word_table')
         rows = table.find_elements_by_tag_name('td')

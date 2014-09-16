@@ -14,14 +14,15 @@ class LayoutAndStylingTest(FunctionalTest):
         self.assertAlmostEqual((inputbox.location['x'] + 
                                 inputbox.size['width'] / 2), 512, delta=5)
 
-        # He does a definition lookup and finds things centered there too
+        # He does a definition lookup and sees the search box is still available 
+        # in the left hand column
         inputbox.send_keys('你好')
         inputbox.send_keys(Keys.ENTER)
 
         self.browser.implicitly_wait(2)
 
-        inputbox = self.browser.find_element_by_id('id_new_english')
-        self.assertAlmostEqual(inputbox.location['x'], 275, delta=10)
+        inputbox = self.browser.find_element_by_id('id_chinese_search_phrase')
+        self.assertAlmostEqual(inputbox.location['x'], 42, delta=10)
 
 
 

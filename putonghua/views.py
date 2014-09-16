@@ -48,7 +48,8 @@ def view_english(request, chinese_phrase):
             )
     definitions = list(get_definitions(chinese_phrase))
 
-    form = ChinesePhraseForm(initial={'pinyin': translation.pinyin})
+    form = ChinesePhraseForm(initial={'pinyin': translation.pinyin,
+                                      'simplified': chinese_phrase, })
     if request.method == 'POST':
         form = ChinesePhraseForm(data=request.POST)
         if form.is_valid():

@@ -18,24 +18,28 @@ class ChinesePhraseFormTest(TestCase):
 
 
     def test_form_validation_for_pinyin_without_tones(self):
-        form = ChinesePhraseForm(data={'pinyin': 'lun2 yi3',
+        form = ChinesePhraseForm(data={'simplified': '轮椅',
+                                       'pinyin': 'lun2 yi3',
                                        'english': 'wheelchair',
                                        'is_name': False})
         self.assertTrue(form.is_valid())
 
-        form = ChinesePhraseForm(data={'pinyin': 'lun yi3',
+        form = ChinesePhraseForm(data={'simplified': '轮椅',
+                                       'pinyin': 'lun yi3',
                                        'english': 'wheelchair',
                                        'is_name': False})
         self.assertFalse(form.is_valid())
         self.assertEqual(form.errors['pinyin'], [VALID_PINYIN_ERROR])
 
-        form = ChinesePhraseForm(data={'pinyin': 'Lun2 yi3',
+        form = ChinesePhraseForm(data={'simplified': '轮椅',
+                                       'pinyin': 'Lun2 yi3',
                                        'english': 'wheelchair',
                                        'is_name': False})
         self.assertFalse(form.is_valid())
         self.assertIn([CAPITALIZED_PINYIN_ERROR], form.errors.values())
 
-        form = ChinesePhraseForm(data={'pinyin': '',
+        form = ChinesePhraseForm(data={'simplified': '轮椅',
+                                       'pinyin': '',
                                        'english': 'wheelchair',
                                        'is_name': False})
         self.assertFalse(form.is_valid())

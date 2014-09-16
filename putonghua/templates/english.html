@@ -14,14 +14,13 @@
   <form role="form"
       method="POST" 
       action="{% url 'view_english' phrase_translation.simplified %}">
-    <ul class="bg-danger">{{ form.non_field_errors }}</ul>
+    {% if form.non_field_errors %}
+    <div class="text-danger bg-danger col-xs-12">{{ form.non_field_errors }}</div>
+    {% endif %}
+    <div class="hidden">{{ form.simplified }}</div>
     {% if form.pinyin.errors %}
     <div class="form-group has-error">
-      <ul class="bg-danger">
-      {% for error in form.pinyin.errors %}
-        <li>{{ error }}</li>
-      {% endfor %}
-      </ul>
+      <div class="text-danger bg-danger col-xs-12">{{ form.pinyin.errors }}</div>
     {% else %}
     <div class="form-group">
     {% endif %}
