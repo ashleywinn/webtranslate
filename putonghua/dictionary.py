@@ -209,7 +209,7 @@ def find_definitions(simplified):
     else:
         matches = ChinesePhrase.objects.filter(simplified=simplified).order_by('-freq_score')
     for match in matches:
-        yield from match.compact_english_translations(definition_cnt=3)
+        yield from match.chinese_english_translations()
 
 
 def add_english_definition(phrase, english, rank=0):

@@ -10,32 +10,34 @@
       <col class="definition-table-pinyin-col" />
       <col class="definition-table-english-col" />
     </colgroup>
-    {% regroup definitions by simplified as simplified_groups %}
-    {% for simplified_group in simplified_groups %}
-       {% regroup simplified_group.list by pinyin as pinyin_groups %}
-       {% for pinyin_group in pinyin_groups %}
-          {% for definition in pinyin_group.list %}
-             <tr>
-	     {% if forloop.parentloop.first and forloop.first %}
-	       <td rowspan="{{ simplified_group.list|length }}">
-		 <a href="{% url 'view_english' definition.simplified %}">
-		 {% if definition.is_name %}
-		    <u>{{ definition.simplified }}</u>
-	         {% else %}
+{% regroup definitions by simplified as simplified_groups %}
+{% for simplified_group in simplified_groups %}
+  {% regroup simplified_group.list by pinyin as pinyin_groups %}
+  {% for pinyin_group in pinyin_groups %}
+    {% for definition in pinyin_group.list %}
+      <tr>
+      {% if forloop.parentloop.first and forloop.first %}
+        <td rowspan="{{ simplified_group.list|length }}">
+           <a href="{% url 'view_english' definition.simplified %}">
+             <p class="rd-putong-char">
+             {% if definition.is_name %}
+             <u>{{ definition.simplified }}</u>
+             {% else %}
 	            {{ definition.simplified }}
-	         {% endif %}
+             {% endif %}
+             </p>
 	         </a>
-	       </td>
-	     {% endif %}
-	     {% if forloop.first %}
-	       <td rowspan="{{ pinyin_group.list|length }}">
-		 {{ definition.pinyin }}
-	       </td>
-	     {% endif %}
-	     <td>{{ definition.english }}</td>
-             </tr>
+	      </td>
+      {% endif %}
+	    {% if forloop.first %}
+	      <td rowspan="{{ pinyin_group.list|length }}">
+		       {{ definition.pinyin }}
+	      </td>
+	    {% endif %}
+        <td>{{ definition.english }}</td>
+      </tr>
 	  {% endfor %}
-       {% endfor %}
-    {% endfor %}
+  {% endfor %}
+{% endfor %}
   </table>
 {% endblock %}
