@@ -1,14 +1,19 @@
 {% extends 'definitions_table_base.html' %}
 
 {% block above_table_area %}
-<div class="highlight">
-  <h3>{{ phrase_translation.simplified }}</h3>
-  <h3>{{ phrase_translation.pinyin }}</h3>
-  {% if phrase_translation.english %}
-  <h3>{{ phrase_translation.english }}</h3>
-  {% else %}
-  <h3><i>no translation found</i></h3>
-  {% endif %}
+<div class="rd-putong-english-definition">
+  <dl>
+    <dt class="text-uppercase">characters</dt>
+    <dd><p class="rd-putong-char">{{ phrase_translation.simplified }}</p></dd>
+    <dt class="text-uppercase">pinyin</dt>
+    <dd>{{ phrase_translation.pinyin }}</dd>
+    <dt class="text-uppercase">english</dt>
+    {% if phrase_translation.english %}
+    <dd>{{ phrase_translation.english }}</dd>
+    {% else %}
+    <h3><i>no translation found</i></h3>
+    {% endif %}
+  </dl>
 </div>
 <div class="rd-putong-english-form">
   <form role="form"

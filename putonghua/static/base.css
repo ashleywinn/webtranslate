@@ -5,6 +5,28 @@
     background-color: #754d8b;
 }
 
+.rd-putong-header h1 a {
+    color: #fff;
+    font-size: 60px;
+    line-height: 1;
+}
+
+.rd-putong-english-definition dt {
+  font-size: 0.8em;
+  font-weight: 500;
+  color: #959595;
+}
+
+.rd-putong-english-definition dd {
+  font-size: 1.7em;
+  margin-bottom: 15px;
+  margin-top: 0;
+}
+
+.rd-putong-char {
+  font-size: 130%;
+}
+
 .rd-putong-english-form {
     padding-left: 15px;
    padding-right: 15px;
@@ -15,11 +37,6 @@
    border-radius: 4px;
 }
 
-.rd-putong-header h1 a {
-    color: #fff;
-    font-size: 60px;
-    line-height: 1;
-}
 
 .rd-putong-main {
     padding-top: 20px;
