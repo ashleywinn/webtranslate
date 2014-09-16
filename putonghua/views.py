@@ -25,7 +25,7 @@ def get_definitions(chin_str):
     yield from find_definitions(chin_str)
     if len(chin_str) > 1:
         for component in get_components_of_phrase(chin_str):
-            yield from find_up_to_n_definitions(2, component)
+            yield from find_up_to_n_definitions(4, component)
 
 def home_page(request):
     return render(request, 'home.html')
